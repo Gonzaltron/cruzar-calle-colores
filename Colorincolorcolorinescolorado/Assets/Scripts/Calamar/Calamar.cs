@@ -42,6 +42,15 @@ public class Calamar : MonoBehaviour
         }
     }
 
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player") && dead == true)
+        {
+            //acaba la partida (cuando se haga el menú)
+            Debug.Log("Game Over");
+        }
+    }
+
     IEnumerator time()
     {
         yield return new WaitForSeconds(TimeOnSquid);
