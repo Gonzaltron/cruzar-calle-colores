@@ -7,15 +7,20 @@ public class Calamar : MonoBehaviour
     [SerializeField] float TimeOnSquid;
     bool isOnSquid = false;
     [SerializeField] bool dead = false;
+    public Mesh mallaVivo;
+    public Mesh mallaMuerto;
+    Mesh malla;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        malla = mallaVivo;
+        this.GetComponent<MeshFilter>().mesh = mallaVivo;
     }
 
     // Update is called once per frame
     void Update()
     {
+        this.GetComponent<MeshFilter>().mesh = malla;
         transform.Translate(0, 0, speed * Time.deltaTime); //se mueve en z, invertir speed para que vaya a -z
         if (isOnSquid)
         {
@@ -24,7 +29,7 @@ public class Calamar : MonoBehaviour
 
         if (dead)
         {
-            //cambia de color
+           malla = mallaMuerto;
         }
     }
 
