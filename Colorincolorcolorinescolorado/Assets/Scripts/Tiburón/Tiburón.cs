@@ -3,12 +3,12 @@ using UnityEngine;
 public class Tiburón : MonoBehaviour
 {
     public Canvas canvas;
-    [SerializeField] float speed;
+    [SerializeField] float speed; //variable de velocidad
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        canvas.enabled = false;
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>(); //Busca el canvas en la escena, y lo asigna a l avariable
+        canvas.enabled = false; //se asegura de que el canvas no se muestre en pantalla al inicio
     }
 
     // Update is called once per frame
@@ -22,8 +22,7 @@ public class Tiburón : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //acaba la partida (cuando se haga el menú)
-            Debug.Log("Game Over");
-            canvas.enabled = true;
+            canvas.enabled = true; //muestrta el canvas en pantalla
         }
     }
 }
