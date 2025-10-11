@@ -33,6 +33,7 @@ public class Calamar : MonoBehaviour
         }
     }
 
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
