@@ -10,11 +10,15 @@ public class Calamar : MonoBehaviour
     public Mesh mallaVivo;
     public Mesh mallaMuerto;
     Mesh malla;
+    public Canvas canvas;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         malla = mallaVivo;
         this.GetComponent<MeshFilter>().mesh = mallaVivo;
+        canvas.enabled = false;
     }
 
     // Update is called once per frame
@@ -40,6 +44,14 @@ public class Calamar : MonoBehaviour
         {
             isOnSquid = true;
             transform.parent = other.transform;
+        }
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player") && dead == true)
+        {
+           canvas.enabled = true;
         }
     }
 
