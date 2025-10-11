@@ -21,6 +21,7 @@ public class Tiburón : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            other.transform.SetParent(this.transform); //hace que el jugador sea hijo del tiburon
             //acaba la partida (cuando se haga el menú)
             canvas.enabled = true; //muestrta el canvas en pantalla
         }
