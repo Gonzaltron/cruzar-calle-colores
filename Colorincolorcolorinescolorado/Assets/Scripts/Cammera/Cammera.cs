@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using Unity.VisualScripting;
 
 public class Cammera : MonoBehaviour {
 
@@ -10,8 +12,10 @@ public class Cammera : MonoBehaviour {
     public float SpeedNormal;
     public float SpeedFast;
     [SerializeField] Canvas canvas;
-    public bool isSmoothFollow = true;
     float distanceZstart;
+    public float smoothSpeed;
+    public float sidewaisMovementDuration;
+    public float sideMovement;
     void Start ()
     {
         canvas = FindObjectOfType<Canvas>();
@@ -30,11 +34,16 @@ public class Cammera : MonoBehaviour {
 
         if (distanceZ > 6)
         {
-            Speed = SpeedFast;
+            DOTween.To(() => Speed, x => Speed = x, SpeedFast, smoothSpeed);
         }
         else
         {
             Speed = SpeedNormal;
+        }
+
+        if(distanceZ < 6 && distanceZ > 2)
+        {
+            DOTween.To(() => Speed, x => Speed = x, SpeedNormal, smoothSpeed);
         }
 
         if (distanceZ < 2)
@@ -44,6 +53,16 @@ public class Cammera : MonoBehaviour {
             //animacion de muerte
             //quitarle el control al jugador
             //...
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            transform.DOMoveX(transform.position.x -sideMovement, sidewaisMovementDuration);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            transform.DOMoveX(transform.position.x +sideMovement, sidewaisMovementDuration);
         }
     }
 }
