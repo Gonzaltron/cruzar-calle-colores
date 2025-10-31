@@ -45,26 +45,26 @@ public class Tiburón : MonoBehaviour
     {
         while (true)
         {
-            Meshfilter.mesh = Tibu1;
-            yield return new WaitForSeconds(animationWaitTime);
+            Meshfilter.mesh = Tibu1; //asigna la malla Tibu1 al Meshfilter
+            yield return new WaitForSeconds(animationWaitTime); //espera
             //Meshfilter.mesh = Tibu2;
             //yield return new WaitForSeconds(animationWaitTime);
             //Meshfilter.mesh = Tibu3;
             //yield return new WaitForSeconds(animationWaitTime);
-            Meshfilter.mesh = Tibu4;
-            yield return new WaitForSeconds(animationWaitTime);
+            Meshfilter.mesh = Tibu4; //asigna la malla Tibu4 al Meshfilter
+            yield return new WaitForSeconds(animationWaitTime); //espera
            // Meshfilter.mesh = Tibu3;
            // yield return new WaitForSeconds(animationWaitTime);
            // Meshfilter.mesh = Tibu2;
            // yield return new WaitForSeconds(animationWaitTime);
-            Meshfilter.mesh = Tibu1;
-            yield return new WaitForSeconds(animationWaitTime);
+            Meshfilter.mesh = Tibu1; //asigna la malla Tibu1 al Meshfilter
+            yield return new WaitForSeconds(animationWaitTime); //espera
            //Meshfilter.mesh = Tibu5;
            //yield return new WaitForSeconds(animationWaitTime);
            //Meshfilter.mesh = Tibu6;
            //yield return new WaitForSeconds(animationWaitTime);
-            Meshfilter.mesh = Tibu7;
-            yield return new WaitForSeconds(animationWaitTime);
+            Meshfilter.mesh = Tibu7; //asigna la malla Tibu7 al Meshfilter
+            yield return new WaitForSeconds(animationWaitTime); //espera
            //Meshfilter.mesh = Tibu6;
            //yield return new WaitForSeconds(animationWaitTime);
            //Meshfilter.mesh = Tibu5;
