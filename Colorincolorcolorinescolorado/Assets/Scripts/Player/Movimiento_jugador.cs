@@ -10,7 +10,7 @@ public class Movimiento_jugador: MonoBehaviour
     private Vector3 change;
     bool isXMoving;
     bool isYMoving;
-
+    public Vector2 direction;
 
     void Start()
     {
@@ -19,8 +19,26 @@ public class Movimiento_jugador: MonoBehaviour
 
     void Update()
     {
-        change.x = Input.GetAxisRaw("Horizontal"); // Se puede mover ahora a los lados
-        change.z = Input.GetAxisRaw("Vertical"); // Se puede mover ahora hacia delante
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            direction = new Vector2(-1, 0);
+            Movement();
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            direction = new Vector2(0, 1);
+            Movement();
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            direction = new Vector2(1, 0);
+            Movement();
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            direction = new Vector2 (0, -1);
+            Movement();
+        }
   
     }
 
@@ -41,5 +59,17 @@ public class Movimiento_jugador: MonoBehaviour
 
         // Si la magnitud es 0 es que estamos quieto
         isMoving = (change.magnitude != 0);
+    }
+
+    void Movement()
+    {
+
+        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + new Vector3(direction.x, -1, direction.y), Vector3.one*0.2f, Quaternion.identity);
+        int i = 0;
+
+        while (i < hitColliders.Length)
+        {
+            i++;
+        }
     }
 }
