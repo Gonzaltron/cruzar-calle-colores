@@ -34,7 +34,7 @@ public class Cammera : MonoBehaviour {
         //cambia la velocidad de la camara segun la distancia al jugador
         if (distanceZ > 6)
         {
-            DOTween.To(() => Speed, x => Speed = x, SpeedFast, smoothSpeed);
+            DOTween.To(() => Speed, x => Speed = x, SpeedFast, smoothSpeed); //cambia la velocidad a SpeedFast con suavizado
         }
         else
         {
@@ -44,7 +44,7 @@ public class Cammera : MonoBehaviour {
         //cuando el jugador esta cerca, reduce la velocidad
         if (distanceZ < 6 && distanceZ > 2)
         {
-            DOTween.To(() => Speed, x => Speed = x, SpeedNormal, smoothSpeed);
+            DOTween.To(() => Speed, x => Speed = x, SpeedNormal, smoothSpeed); //cambia la velocidad a SpeedNormal con suavizado
         }
 
         //cuando el jugador esta muy cerca, muestra el canvas y detiene la camara
@@ -58,14 +58,14 @@ public class Cammera : MonoBehaviour {
         }
 
         //movimiento lateral de la camara con las flechas izquierda y derecha
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) //si se pulsa la flecha izquierda
         {
-            transform.DOMoveX(transform.position.x -sideMovement, sidewaisMovementDuration);
+            transform.DOMoveX(transform.position.x -sideMovement, sidewaisMovementDuration); //mueve la camara a la izquierda, con duracion sidewaisMovementDuration
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow)) //si se pulsa la flecha derecha
         {
-            transform.DOMoveX(transform.position.x +sideMovement, sidewaisMovementDuration);
+            transform.DOMoveX(transform.position.x +sideMovement, sidewaisMovementDuration); //mueve la camara a la derecha, con duracion sidewaisMovementDuration
         }
     }
 }
