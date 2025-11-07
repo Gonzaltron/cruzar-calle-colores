@@ -26,7 +26,7 @@ public class FloorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) // Si avanzas una casillas
+        if (Input.GetKeyDown(KeyCode.W)) // Si avanzas una casillas
         {
             GenerateMoreSuelo();
         }

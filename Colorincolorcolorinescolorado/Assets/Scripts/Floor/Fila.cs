@@ -1,7 +1,8 @@
 using UnityEngine;
-
-public class Floor : MonoBehaviour
+using System.Collections.Generic;
+public class Fila : MonoBehaviour
 {
+    List<Casilla> casillas = new List<Casilla>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
