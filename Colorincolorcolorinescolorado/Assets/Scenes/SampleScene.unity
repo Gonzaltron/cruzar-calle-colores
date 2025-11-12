@@ -206,8 +206,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.13180691, y: -0.6934968, z: 0.13139027, w: 0.696007}
+  m_LocalPosition: {x: 17.676434, y: 12.336953, z: 10.242344}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -270,12 +270,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cammera
   player: {fileID: 1606485894}
-  SpeedNormal: 0
-  SpeedFast: 0
+  SpeedNormal: 1
+  SpeedFast: 5
   canvas: {fileID: 2082245882}
-  smoothSpeed: 0
-  sidewaisMovementDuration: 0
-  sideMovement: 0
+  smoothSpeed: 0.5
+  sidewaisMovementDuration: 0.5
+  sideMovement: 1
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +563,9 @@ MonoBehaviour:
   sueloNormal: {fileID: 8179983075078875020, guid: c639698832b4c684d8b719956d818b32, type: 3}
   sueloCalamar: {fileID: 8179983075078875020, guid: c639698832b4c684d8b719956d818b32, type: 3}
   sueloTiburon: {fileID: 8179983075078875020, guid: c639698832b4c684d8b719956d818b32, type: 3}
-  posicionInicial: {fileID: 1584871372}
+  posicionInicial: {fileID: 1606485900}
+  jugador: {fileID: 1606485896}
+  filasIniciales: 10
 --- !u!4 &1584871372
 Transform:
   m_ObjectHideFlags: 0
@@ -642,6 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movimiento_jugador
   direction: {x: 0, y: 0}
+  posicionMax: 0
 --- !u!65 &1606485897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -728,7 +731,7 @@ Transform:
   m_GameObject: {fileID: 1606485894}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.87, y: 1, z: 6.98}
+  m_LocalPosition: {x: 0, y: 0, z: 6.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
