@@ -6,36 +6,38 @@ public class FloorManager : MonoBehaviour
     public GameObject sueloNormal;
     public GameObject sueloCalamar;
     public GameObject sueloTiburon;
-    public Transform posicionInicial;
-    private Vector3 posicion;
+    public Transform posicionInicial; // Posición donde se empiezan a crear las filas
+    private Vector3 posicion; // Posición donde crear la siguiente fila
+    public Movimiento_jugador jugador; // La referencia al script del jugador
 
-    void Awake()
-    {
+    private float ultimaFila = 0f;  // La posición de la ultima fila creada
+    public int filasIniciales = 10; 
 
-    }
+ 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for (int i = 0;  i < 10; i++) // Al inicio se crearán 10 filas
+        posicion = posicionInicial.position; // Posición donde las filas empiezan a crearse
+        ultimaFila = posicion.z; // La última fila es la posición inicial
+        for (int i = 0;  i < filasIniciales; i++) // Al inicio se crearán 10 filas
         {
-            Instantiate(sueloNormal, posicion,Quaternion.identity, transform); // Se crea una fila de tipo normal, el transform es para que sea hijo del transform
-            posicion.z += 1; // Se creará la siguiente fila, la contigua
+            NextSuelo(sueloNormal);
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W)) // Si avanzas una casillas
+        if (jugador.posicionMax >= ultimaFila - filasIniciales/2) // Si el jugador está a 5 casillas de la última fila 
         {
-            GenerateMoreSuelo();
+            GenerateMoreSuelo(); // Se crean más filas
         }
     }
-
+   
     void NextSuelo(GameObject tipoSuelo)
     {
         Instantiate(tipoSuelo, posicion, Quaternion.identity, transform); // Se crea una fila de x tipo, el quaternion.identity es porque hay que tenerlo
-        posicion.z += 1; 
+        posicion.z += 1; // La posición z aumenta en 1 para tener la posición de la siguiente fila
+        ultimaFila = posicion.z; // Actualiza la posición de la ultima fila 
     }
 
     void GenerateMoreSuelo()
@@ -48,7 +50,6 @@ public class FloorManager : MonoBehaviour
         else if (probability <= 65)
         {
             NextSuelo(sueloTiburon); // Creará un suelo con tiburones
-
         }
         else
         {
