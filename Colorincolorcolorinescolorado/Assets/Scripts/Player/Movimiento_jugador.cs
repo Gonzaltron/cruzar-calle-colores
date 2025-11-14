@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Movimiento_jugador: MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class Movimiento_jugador: MonoBehaviour
     bool isMoving = false;
     public bool dead = false;
     public Muerte muerte;
+    public Canvas Canvasmarcador;
+    public int score = 0;
+    public int highscore;
+    public string CanvasMarcador;
+    public TMP_Text textoMarcador;
    
 
     void Start()
@@ -22,6 +28,8 @@ public class Movimiento_jugador: MonoBehaviour
         posicionMax = transform.position.z; // Inicializa la posici�n m�xima 
         rb2d = GetComponent<Rigidbody>();
         muerte = GetComponent<Muerte>();
+        textoMarcador = GameObject.Find("CanvasMarcador").GetComponentInChildren<TMP_Text>();
+        textoMarcador.text = "Score: " + score.ToString();
     }
 
     void Update()
@@ -41,11 +49,18 @@ public class Movimiento_jugador: MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.W))
         {
             direction = new Vector2(0, 1);
+            score += 1;
+            if (score > highscore)
+            {
+                highscore = score;
+                textoMarcador.text = "Score: " + score.ToString();
+            }
             Movement();
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             direction = new Vector2 (0, -1);
+            score -= 1;
             Movement();
         }
     }
