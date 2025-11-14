@@ -561,9 +561,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorManager
   sueloNormal: {fileID: 8179983075078875020, guid: c639698832b4c684d8b719956d818b32, type: 3}
-  sueloCalamar: {fileID: 8179983075078875020, guid: c639698832b4c684d8b719956d818b32, type: 3}
-  sueloTiburon: {fileID: 8179983075078875020, guid: c639698832b4c684d8b719956d818b32, type: 3}
-  posicionInicial: {fileID: 1606485900}
+  sueloCalamar: {fileID: 8179983075078875020, guid: 57f8f1c6d44732043b2d3492e660f4bf, type: 3}
+  sueloTiburon: {fileID: 8179983075078875020, guid: 166d1bc4387a40d4f9404a38c2a391f2, type: 3}
+  posicionInicial: {fileID: 1584871372}
   jugador: {fileID: 1606485896}
   filasIniciales: 10
 --- !u!4 &1584871372
