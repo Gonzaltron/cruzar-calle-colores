@@ -5,8 +5,8 @@ public class Calamar : MonoBehaviour
 {
     [SerializeField] float speed; //variable de velocidad
     [SerializeField] float TimeOnSquid; //tiempo que pasa desde que el jugador sube al calamar, hasta que este muere
-    bool isOnSquid = false; //booleano para saber si el jugador está sobre el calamar (e iniciar la corutina)
-    [SerializeField] bool dead = false; //booleano para saber si el calamar está muerto o vivo
+    bool isOnSquid = false; //booleano para saber si el jugador estï¿½ sobre el calamar (e iniciar la corutina)
+    [SerializeField] public bool dead = false; //booleano para saber si el calamar estï¿½ muerto o vivo
     public Mesh mallaVivo; //malla del calamar vivo
     public Mesh mallaMuerto; //mall del calamar muerto
     Mesh malla; //variabkle malla para programar mas comodo
@@ -26,12 +26,12 @@ public class Calamar : MonoBehaviour
     {
         this.GetComponent<MeshFilter>().mesh = malla; //asigna la malla (vivo o muerto) al MeshFilter del calamar
         transform.Translate(0, 0, speed * Time.deltaTime); //se mueve en z, invertir speed para que vaya a -z
-        if (isOnSquid) //si el jugador está sobre el calamar
+        if (isOnSquid) //si el jugador estï¿½ sobre el calamar
         {
             StartCoroutine(time()); //llama a la corrutina
         }
 
-        if (dead) //si el calamar está muerto
+        if (dead) //si el calamar estï¿½ muerto
         {
             malla = mallaMuerto; //cambia la malla a la de muerto
         }
@@ -49,7 +49,7 @@ public class Calamar : MonoBehaviour
 
     void OnCollisionStay(Collision other) //mientras haya una colision
     {
-        if (other.gameObject.CompareTag("Player") && dead == true) //si el otro objeto tiene el tag player y el calamar está muerto
+        if (other.gameObject.CompareTag("Player") && dead == true) //si el otro objeto tiene el tag player y el calamar estï¿½ muerto
         {
             //el personaje muere
             canvas.enabled = true; //muestra el canvas en pantalla
@@ -67,6 +67,6 @@ public class Calamar : MonoBehaviour
     IEnumerator time() //corutina que espera un tiempo y luego mata al calamar
     {
         yield return new WaitForSeconds(TimeOnSquid); //espera el tiempo asignado en TimeOnSquid
-        dead = true; //cambia el booleano a true (el calamar está muerto)
+        dead = true; //cambia el booleano a true (el calamar estï¿½ muerto)
     }
 }
