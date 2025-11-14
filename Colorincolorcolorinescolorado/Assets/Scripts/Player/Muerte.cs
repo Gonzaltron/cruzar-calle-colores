@@ -6,7 +6,7 @@ public class Muerte : MonoBehaviour
     public MeshRenderer jugador;
     public Movimiento_jugador movimientoJugador;
     public Canvas canvasMuerte;
-    public Camera camara;
+    public Cammera camara;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +25,8 @@ public class Muerte : MonoBehaviour
         movimientoJugador.enabled = false;
         jugador.material.DOFade(0f, 1f);
         canvasMuerte.enabled = true;
-        camara.GetComponent<Camera>().speed = 0;
+        Cammera cam = camara.GetComponent<Cammera>();
+        cam.SpeedNormal = 0;
+        cam.SpeedFast = 0;
     }
 }
