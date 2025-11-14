@@ -31,6 +31,10 @@ public class FloorManager : MonoBehaviour
         {
             GenerateMoreSuelo(); // Se crean más filas
         }
+        else if (jugador.posicionMax >= ultimaFila + filasIniciales)
+        {
+            EliminarSuelo(); 
+        }
     }
    
     void NextSuelo(GameObject tipoSuelo)
@@ -55,5 +59,10 @@ public class FloorManager : MonoBehaviour
         {
             NextSuelo(sueloCalamar); // Creará un suelo con calamares
         }
+    }
+    
+    void EliminarSuelo()
+    {
+       
     }
 }

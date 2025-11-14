@@ -14,11 +14,14 @@ public class Tiburón : MonoBehaviour
     [SerializeField] Mesh Tibu6;
     [SerializeField] Mesh Tibu7;
     public float animationWaitTime; //tiempo de espera entre cada frame de la animaci�
+    public Vector3 posicionInicial;
+    public GameObject tiburon;
 
     MeshFilter Meshfilter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        posicionInicial = gameObject.transform.position;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>(); //Busca el canvas en la escena, y lo asigna a l avariable
         canvas.enabled = false; //se asegura de que el canvas no se muestre en pantalla al inicio
         Meshfilter = GetComponent<MeshFilter>();
@@ -28,11 +31,23 @@ public class Tiburón : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 0, speed * Time.deltaTime); //se mueve en z, invertir speed para que vaya a -z
+        transform.Translate(-0.04f, 0, speed * Time.deltaTime); //se mueve en z, invertir speed para que vaya a -z
     }
 
     void OnCollisionEnter(Collision other)
     {
+        Debug.Log("dfjs");
+        
+     
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("trigger"))
+        {
+            transform.position = posicionInicial;
+
+        }
+
         if (other.gameObject.CompareTag("Player"))
         {
             other.transform.SetParent(this.transform); //hace que el jugador sea hijo del tiburon
@@ -41,6 +56,7 @@ public class Tiburón : MonoBehaviour
         }
     }
     
+
     IEnumerator Animation()
     {
         while (true)
