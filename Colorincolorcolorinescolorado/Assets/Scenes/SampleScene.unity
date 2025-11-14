@@ -269,10 +269,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79c503ced413fc45a519b6b38213d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cammera
+  canvas: {fileID: 2082245882}
   player: {fileID: 1606485894}
   SpeedNormal: 1
   SpeedFast: 5
-  canvas: {fileID: 2082245882}
   smoothSpeed: 0.5
   sidewaisMovementDuration: 0.5
   sideMovement: 1
@@ -563,6 +563,8 @@ MonoBehaviour:
   sueloNormal: {fileID: 8179983075078875020, guid: c639698832b4c684d8b719956d818b32, type: 3}
   sueloCalamar: {fileID: 8179983075078875020, guid: 57f8f1c6d44732043b2d3492e660f4bf, type: 3}
   sueloTiburon: {fileID: 8179983075078875020, guid: 166d1bc4387a40d4f9404a38c2a391f2, type: 3}
+  sueloRojo: {fileID: 8179983075078875020, guid: 182cba890dcbb3044972b65fdb6b00b9, type: 3}
+  sueloNegro: {fileID: 8179983075078875020, guid: d9aa8e7e29ac93448855df34ec7d06e9, type: 3}
   posicionInicial: {fileID: 1584871372}
   jugador: {fileID: 1606485896}
   filasIniciales: 10

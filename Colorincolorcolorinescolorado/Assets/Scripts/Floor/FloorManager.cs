@@ -6,6 +6,8 @@ public class FloorManager : MonoBehaviour
     public GameObject sueloNormal;
     public GameObject sueloCalamar;
     public GameObject sueloTiburon;
+    public GameObject sueloRojo;
+    public GameObject sueloNegro;
     public Transform posicionInicial; // Posición donde se empiezan a crear las filas
     private Vector3 posicion; // Posición donde crear la siguiente fila
     public Movimiento_jugador jugador; // La referencia al script del jugador
@@ -47,17 +49,25 @@ public class FloorManager : MonoBehaviour
     void GenerateMoreSuelo()
     {
         int probability = Random.Range(0, 100); // Crea un número aleatorio del 0 al 100
-        if (probability <= 30) // Si el número es menor o igual a 30
+        if (probability <= 20) // Si el número es menor o igual a 30
         {
             NextSuelo(sueloNormal); // Creará un suelo normal
         }
-        else if (probability <= 65)
+        else if (probability <= 40)
         {
             NextSuelo(sueloTiburon); // Creará un suelo con tiburones
         }
-        else
+        else if (probability <= 60)
         {
             NextSuelo(sueloCalamar); // Creará un suelo con calamares
+        }
+        else if (probability <= 80)
+        {
+            NextSuelo(sueloNegro);
+        }
+        else
+        {
+            NextSuelo(sueloRojo);
         }
     }
     
