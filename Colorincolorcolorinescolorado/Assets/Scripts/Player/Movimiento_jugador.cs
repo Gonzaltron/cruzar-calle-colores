@@ -13,21 +13,24 @@ public class Movimiento_jugador: MonoBehaviour
     public float posicionMax;
 
     bool isMoving = false;
+    public bool dead = false;
+    public Muerte muerte;
    
 
     void Start()
     {
-        posicionMax = transform.position.z; // Inicializa la posición máxima 
+        posicionMax = transform.position.z; // Inicializa la posiciï¿½n mï¿½xima 
         rb2d = GetComponent<Rigidbody>();
+        muerte = GetComponent<Muerte>();
     }
 
     void Update()
     {
-        posicionMax = Mathf.Max(posicionMax, transform.position.z); // Actualiza la posición máxima alcanzada cogiendo el valor mayor entre los dos
+        posicionMax = Mathf.Max(posicionMax, transform.position.z); // Actualiza la posiciï¿½n mï¿½xima alcanzada cogiendo el valor mayor entre los dos
 
         if (Input.GetKeyDown(KeyCode.A)) // Si se pulsa la A
         {
-            direction = new Vector2(-1, 0); // La dirección es hacia la izquierda
+            direction = new Vector2(-1, 0); // La direcciï¿½n es hacia la izquierda
             Movement(); // Se mueve
         }
         else if (Input.GetKeyDown(KeyCode.D))
@@ -49,12 +52,12 @@ public class Movimiento_jugador: MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isMoving) // Si no se está moviendo
+        if (!isMoving) // Si no se estï¿½ moviendo
         {
-            rb2d.MovePosition(rb2d.position + change * moveSpeed * Time.fixedDeltaTime); // Se mueve en la dirección indicada
+            rb2d.MovePosition(rb2d.position + change * moveSpeed * Time.fixedDeltaTime); // Se mueve en la direcciï¿½n indicada
             moveSpeed = 50; 
         }
-        isMoving = (change.magnitude != 0); // Si la magnitud es 0 es que está quieto
+        isMoving = (change.magnitude != 0); // Si la magnitud es 0 es que estï¿½ quieto
     }
 
     void Movement()
@@ -72,6 +75,15 @@ public class Movimiento_jugador: MonoBehaviour
                 break;
             }
             i++;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obastaculo") || collision.gameObject.CompareTag("Tiburon") || (collision.gameObject.CompareTag("Calamar") && collision.gameObject.GetComponent<Calamar>().dead))
+        {
+            dead = true;
+            muerte.muerteJugador();
         }
     }
 }
