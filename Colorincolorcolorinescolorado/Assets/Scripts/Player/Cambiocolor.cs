@@ -12,6 +12,7 @@ public class cambio : MonoBehaviour
 
     public Color newColor;
 
+
     public bool colorChanged = false;   
     void Start()
     {
@@ -25,16 +26,17 @@ public class cambio : MonoBehaviour
         {
             if (!colorChanged)      
             {
-                ChangeColorMethod(newColor);        //Cambiar el color inicial al segundo color si el inicial está puesto
+                ChangeColorMethod(newColor);        //Cambiar el color inicial al segundo color si el inicial estï¿½ puesto
 
             }
             else
             {
-                ChangeColorMethod(defaultColor);    //Si el color inicial no está seleccionado entonces significa que está el secundario puesto por lo tanto se cambia al inicial 
+                ChangeColorMethod(defaultColor);    //Si el color inicial no estï¿½ seleccionado entonces significa que estï¿½ el secundario puesto por lo tanto se cambia al inicial 
             }
         }
     }
 
+ 
     public void ChangeColorMethod(Color colorToChange)
     {
         colorChanged = !colorChanged;

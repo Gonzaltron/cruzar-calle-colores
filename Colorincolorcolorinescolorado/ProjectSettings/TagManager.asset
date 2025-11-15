@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - trigger
+  - rojo
+  - negro
   layers:
   - Default
   - TransparentFX
