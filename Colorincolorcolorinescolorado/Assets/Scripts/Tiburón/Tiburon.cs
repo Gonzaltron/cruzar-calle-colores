@@ -36,8 +36,7 @@ public class Tiburón : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("dfjs");
-        
+        Debug.Log("dfjs"); 
      
     }
     void OnTriggerEnter(Collider other)
