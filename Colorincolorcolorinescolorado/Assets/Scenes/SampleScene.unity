@@ -999,6 +999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::cambio
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
   newColor: {r: 0.9169811, g: 0.11592023, b: 0.11592023, a: 0}
+  currentColor: 2
   colorChanged: 0
 --- !u!114 &1606485902
 MonoBehaviour:
