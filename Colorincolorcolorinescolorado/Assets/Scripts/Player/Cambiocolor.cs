@@ -11,6 +11,7 @@ public class cambio : MonoBehaviour
     public Color defaultColor;
 
     public Color newColor;
+    public int currentColor;
 
 
     public bool colorChanged = false;   
@@ -41,6 +42,14 @@ public class cambio : MonoBehaviour
     {
         colorChanged = !colorChanged;
         rendererObject.material.color = colorToChange;
+        if (currentColor == 1)
+        {
+            currentColor = 2;
+        }
+        else
+        {
+            currentColor = 1;
+        }
     }
 }
 

@@ -1,12 +1,17 @@
 using UnityEngine;
 
+
 public class Casilla : MonoBehaviour
 {
     public GameObject casilla;
     public Transform posicion;
-   
+    [SerializeField] public int color;
 
 
+    void Awake()
+    {
+        
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,3 +28,4 @@ public class Casilla : MonoBehaviour
         return posicion.position;
     }
 }
+

@@ -21,6 +21,7 @@ public class Movimiento_jugador: MonoBehaviour
     public int highscore;
     public string CanvasMarcador;
     public TMP_Text textoMarcador;
+    private cambio playercambiocolor;
    
 
     void Start()
@@ -30,6 +31,7 @@ public class Movimiento_jugador: MonoBehaviour
         muerte = GetComponent<Muerte>();
         textoMarcador = GameObject.Find("CanvasMarcador").GetComponentInChildren<TMP_Text>();
         textoMarcador.text = "Score: " + score.ToString();
+        playercambiocolor = GetComponent<cambio>();
     }
 
     void Update()
@@ -75,7 +77,7 @@ public class Movimiento_jugador: MonoBehaviour
         isMoving = (change.magnitude != 0); // Si la magnitud es 0 es que est� quieto
     }
 
-    //private Cambiocolor playercambiocolor;
+    
 
     void Movement()
     {   
@@ -87,12 +89,16 @@ public class Movimiento_jugador: MonoBehaviour
             Casilla casilla = hitColliders[i].GetComponent<Casilla>();
             if (casilla != null)
             {
-                //if (playercambiocolor.color == casilla.GetColor())
-                //{
+                if (playercambiocolor.currentColor == casilla.GetComponent<Casilla>().color || casilla.GetComponent<Casilla>().color == 0)
+                {
                     Vector3 p = casilla.getPosition();
                     transform.position = p;
                     break;
-                //}
+                }
+                else
+                {
+                    muerte.muerteJugador();
+                }
             }
             i++;
         }

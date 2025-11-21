@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Casilla
   casilla: {fileID: 7460343193918706681}
   posicion: {fileID: 61015735025960256}
+  color: 1
 --- !u!54 &2009980190933280930
 Rigidbody:
   m_ObjectHideFlags: 0

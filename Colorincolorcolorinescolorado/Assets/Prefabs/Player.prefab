@@ -108,7 +108,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -129,6 +129,11 @@ MonoBehaviour:
   posicionMax: 0
   dead: 0
   muerte: {fileID: 0}
+  Canvasmarcador: {fileID: 0}
+  score: 0
+  highscore: 0
+  CanvasMarcador: 
+  textoMarcador: {fileID: 0}
 --- !u!54 &6784192422345656509
 Rigidbody:
   m_ObjectHideFlags: 0
