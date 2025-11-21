@@ -39,7 +39,22 @@ public class Colorin : MonoBehaviour
             {
                 Debug.Log("es rojo");
             }
+
+             if (player.gameObject.GetComponent<cambio>().colorChanged == false)
+            {
+                player.gameObject.GetComponent<Muerte>();
+                Debug.Log("lalala");
+            }
         }
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            
+        
+        }
+
     }
 }
 

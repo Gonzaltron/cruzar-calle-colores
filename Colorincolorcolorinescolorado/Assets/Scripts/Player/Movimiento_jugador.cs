@@ -75,6 +75,8 @@ public class Movimiento_jugador: MonoBehaviour
         isMoving = (change.magnitude != 0); // Si la magnitud es 0 es que est� quieto
     }
 
+    //private Cambiocolor playercambiocolor;
+
     void Movement()
     {   
         Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + new Vector3(direction.x, -1, direction.y), Vector3.one*0.2f, Quaternion.identity);
@@ -85,9 +87,12 @@ public class Movimiento_jugador: MonoBehaviour
             Casilla casilla = hitColliders[i].GetComponent<Casilla>();
             if (casilla != null)
             {
-                Vector3 p = casilla.getPosition();
-                transform.position = p;
-                break;
+                //if (playercambiocolor.color == casilla.GetColor())
+                //{
+                    Vector3 p = casilla.getPosition();
+                    transform.position = p;
+                    break;
+                //}
             }
             i++;
         }
