@@ -1354,6 +1354,7 @@ GameObject:
   - component: {fileID: 1606485901}
   - component: {fileID: 1606485902}
   - component: {fileID: 1606485903}
+  - component: {fileID: 1606485904}
   m_Layer: 0
   m_Name: Jellyfish
   m_TagString: Player
@@ -1546,8 +1547,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Muerte
   jugador: {fileID: 1606485898}
   movimientoJugador: {fileID: 1606485896}
-  canvasMuerte: {fileID: 2082245882}
+  canvasgMarcador: {fileID: 0}
+  canvasgMuerte: {fileID: 0}
   camara: {fileID: 330585548}
+  canvasManager: {fileID: 0}
+--- !u!114 &1606485904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606485894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032235678e8ebe34b9691e00cee43a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasManager
+  canvasgMarcador: {fileID: 1376657628}
+  canvasgMuerte: {fileID: 895558002}
+  canvasgMenuPrincipal: {fileID: 408352815}
 --- !u!1 &1912913334
 GameObject:
   m_ObjectHideFlags: 0

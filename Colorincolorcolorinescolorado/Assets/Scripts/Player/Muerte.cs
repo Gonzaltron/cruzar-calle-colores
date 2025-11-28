@@ -14,6 +14,7 @@ public class Muerte : MonoBehaviour
     {
         jugador = gameObject.GetComponent<MeshRenderer>();
         movimientoJugador = GetComponent<Movimiento_jugador>();
+        canvasManager = this.gameObject.GetComponent<CanvasManager>();
     }
 
     // Update is called once per frame
