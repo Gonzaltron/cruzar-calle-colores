@@ -106,9 +106,17 @@ public class Movimiento_jugador: MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Obastaculo") || collision.gameObject.CompareTag("Tiburon") || (collision.gameObject.CompareTag("Calamar") && collision.gameObject.GetComponent<Calamar>().dead))
+        if (collision.gameObject.CompareTag("Obstaculo")  || (collision.gameObject.CompareTag("Calamar") && collision.gameObject.GetComponent<Calamar>().dead))
         {
-            Debug.Log("tibu");
+            dead = true;
+            muerte.muerteJugador();
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Tiburon"))
+        {
             dead = true;
             muerte.muerteJugador();
         }
