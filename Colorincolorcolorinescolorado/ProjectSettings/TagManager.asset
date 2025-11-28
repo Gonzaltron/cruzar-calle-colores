@@ -7,6 +7,10 @@ TagManager:
   - trigger
   - rojo
   - negro
+  - Tiburon
+  - Obstaculo
+  - Undefined
+  - Casilla
   layers:
   - Default
   - TransparentFX

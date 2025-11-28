@@ -34,21 +34,12 @@ public class Tiburón : MonoBehaviour
         transform.Translate(-0.04f, 0, speed * Time.deltaTime); //se mueve en z, invertir speed para que vaya a -z
     }
 
-    void OnCollisionEnter(Collision other)
-    {
-
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("dfjs");
-        }
-
-    }
+ 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("trigger"))
         {
             transform.position = posicionInicial;
-
         }
 
         if (other.gameObject.CompareTag("Player"))
@@ -56,7 +47,6 @@ public class Tiburón : MonoBehaviour
             other.transform.SetParent(this.transform); //hace que el jugador sea hijo del tiburon
             //acaba la partida (cuando se haga el men�)
             canvas.enabled = true; //muestrta el canvas en pantalla
-            Debug.Log("funiona");
         }
     }
     
