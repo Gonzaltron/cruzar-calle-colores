@@ -167,12 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -665,10 +665,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 246058773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 127.5}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -464.9}
+  m_SizeDelta: {x: 497.9, y: 182.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1091711143
 MonoBehaviour:
@@ -717,15 +717,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1133,6 +1133,67 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &3211143073249899239
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2824786970505772467, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_Name
+      value: Obstaculo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970111235042404517, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.031
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970111235042404517, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5259
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970111235042404517, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.86319
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970111235042404517, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970111235042404517, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970111235042404517, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970111235042404517, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970111235042404517, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970111235042404517, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970111235042404517, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187736901247245120, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
+      propertyPath: activado
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e35ebcf34acd4e46bdfa501b36fc8c4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1145,3 +1206,4 @@ SceneRoots:
   - {fileID: 549199238}
   - {fileID: 1584871372}
   - {fileID: 246058773}
+  - {fileID: 3211143073249899239}

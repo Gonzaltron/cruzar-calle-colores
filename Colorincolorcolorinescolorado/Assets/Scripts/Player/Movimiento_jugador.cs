@@ -76,7 +76,6 @@ public class Movimiento_jugador: MonoBehaviour
         }
         isMoving = (change.magnitude != 0); // Si la magnitud es 0 es que est� quieto
     }
-
     
 
     void Movement()
@@ -86,18 +85,29 @@ public class Movimiento_jugador: MonoBehaviour
 
         while (i < hitColliders.Length)
         {
+            bool canMove = false;
             Casilla casilla = hitColliders[i].GetComponent<Casilla>();
             if (casilla != null)
             {
-                if (playercambiocolor.currentColor == casilla.GetComponent<Casilla>().color || casilla.GetComponent<Casilla>().color == 0)
+                if (playercambiocolor.currentColor == casilla.color && casilla.color != 0)
+                {
+                    canMove = true;
+                }
+                else if (playercambiocolor.currentColor != casilla.color && casilla.color != 0)
+                {
+                    muerte.muerteJugador();
+                    break;
+                }
+                if (casilla.tieneObstaculo == false)
+                {
+                    canMove = true;
+                }
+
+                if (canMove)
                 {
                     Vector3 p = casilla.getPosition();
                     transform.position = p;
                     break;
-                }
-                else
-                {
-                    muerte.muerteJugador();
                 }
             }
             i++;
@@ -106,11 +116,13 @@ public class Movimiento_jugador: MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Obastaculo") || collision.gameObject.CompareTag("Tiburon") || (collision.gameObject.CompareTag("Calamar") && collision.gameObject.GetComponent<Calamar>().dead))
+        if (collision.gameObject.CompareTag("Tiburon") || (collision.gameObject.CompareTag("Calamar") && collision.gameObject.GetComponent<Calamar>().dead))
         {
             Debug.Log("tibu");
             dead = true;
             muerte.muerteJugador();
         }
     }
+
+
 }
