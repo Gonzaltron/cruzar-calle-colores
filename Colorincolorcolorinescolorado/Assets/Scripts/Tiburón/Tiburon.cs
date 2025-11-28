@@ -36,8 +36,12 @@ public class Tiburón : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("dfjs"); 
-     
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("dfjs");
+        }
+
     }
     void OnTriggerEnter(Collider other)
     {
@@ -52,6 +56,7 @@ public class Tiburón : MonoBehaviour
             other.transform.SetParent(this.transform); //hace que el jugador sea hijo del tiburon
             //acaba la partida (cuando se haga el men�)
             canvas.enabled = true; //muestrta el canvas en pantalla
+            Debug.Log("funiona");
         }
     }
     
