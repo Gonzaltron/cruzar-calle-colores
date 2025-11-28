@@ -5,8 +5,10 @@ public class Muerte : MonoBehaviour
 {
     public MeshRenderer jugador;
     public Movimiento_jugador movimientoJugador;
-    public Canvas canvasMuerte;
+    public CanvasGroup canvasgMarcador;
+    public CanvasGroup canvasgMuerte;
     public Cammera camara;
+    [SerializeField] CanvasManager canvasManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,9 +27,9 @@ public class Muerte : MonoBehaviour
         Debug.Log("muerto");
         movimientoJugador.enabled = false;
         jugador.material.DOFade(0f, 1f);
-        canvasMuerte.enabled = true;
         Cammera cam = camara.GetComponent<Cammera>();
         cam.SpeedNormal = 0;
         cam.SpeedFast = 0;
+        canvasManager.CanvasMuerte();
     }
 }
