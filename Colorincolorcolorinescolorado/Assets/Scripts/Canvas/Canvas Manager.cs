@@ -1,15 +1,25 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class CanvasManager : MonoBehaviour
 {
     public CanvasGroup canvasgMarcador;
     public CanvasGroup canvasgMuerte;
     public CanvasGroup canvasgMenuPrincipal;
+    public Movimiento_jugador movimientoJugador;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        movimientoJugador = GetComponent<Movimiento_jugador>();
+        canvasgMenuPrincipal.interactable = true;
+        canvasgMenuPrincipal.alpha = 1f;
+        canvasgMarcador.alpha = 0f;
+        canvasgMarcador.interactable = false;
+        canvasgMuerte.alpha = 0f;
+        canvasgMuerte.interactable = false;
+        Time.timeScale = 0f;
     }
 
     // Update is called once per frame
@@ -20,10 +30,12 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMenuPrincpal()
     {
+        SceneManager.LoadScene("SampleScene");
         canvasgMuerte.interactable = false;
         canvasgMuerte.DOFade(0f, 1f).From(1f);
         canvasgMenuPrincipal.DOFade(1f, 1f).From(0f);
         canvasgMenuPrincipal.interactable = true;
+        movimientoJugador.enabled = false;
     }
 
     public void CanvasMarcador()
@@ -32,13 +44,29 @@ public class CanvasManager : MonoBehaviour
         canvasgMenuPrincipal.DOFade(0f, 1f).From(1f);
         canvasgMarcador.DOFade(1f, 1f).From(0f);
         canvasgMarcador.interactable = true;
+        Time.timeScale = 1f;
+        movimientoJugador.enabled = true;
     }
 
     public void CanvasMuerte()
     {
         canvasgMarcador.interactable = false;
-        canvasgMarcador.DOFade(0f, 1f).From(1f);
-        canvasgMuerte.DOFade(1f, 1f).From(0f);
+        canvasgMarcador.DOFade(0f, 0.5f).From(1f);
+        canvasgMuerte.DOFade(1f, 0.5f).From(0f);
         canvasgMuerte.interactable = true;
+        movimientoJugador.enabled = false;
+        StartCoroutine(WaitAndPause());
+    }
+    
+
+    public void Salir()
+    {
+        Application.Quit();
+    }  
+    
+    IEnumerator WaitAndPause()
+    {
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 0f;
     }
 }
