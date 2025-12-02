@@ -9,36 +9,36 @@ public class Cammera : MonoBehaviour
     [SerializeField] Canvas canvas;         //canvas
     public GameObject player;               //drag player gameobject into this in inspector
     float Speed;                            //velocidad de movimiento hacia delante
-    public float SpeedNormal;               //Velocidad cuando el jugador está cerca
-    public float SpeedFast;                 //Velocidad cuando el jugador está lejos
-    float distanceZstart;                   //distancia inicial entre cámara y jugador
+    public float SpeedNormal;               //Velocidad cuando el jugador estï¿½ cerca
+    public float SpeedFast;                 //Velocidad cuando el jugador estï¿½ lejos
+    float distanceZstart;                   //distancia inicial entre cï¿½mara y jugador
     public float smoothSpeed;               //suavizado de cambio de velocidad
-    public float sidewaisMovementDuration;  //duración del movimiento lateral
+    public float sidewaisMovementDuration;  //duraciï¿½n del movimiento lateral
     public float sideMovement;              //distancia del movimiento lateral
     private float distanceZ;
     void Start()
     {
         canvas = FindObjectOfType<Canvas>();                                   //busca el canvas en la escena
         canvas.enabled = false;                                                //desactiva el canvas al inicio
-        distanceZstart = player.transform.position.z - transform.position.z;   //calcula la distancia inicial entre cámara y jugador
+        distanceZstart = player.transform.position.z - transform.position.z;   //calcula la distancia inicial entre cï¿½mara y jugador
     }
 
     // Update is called once per frame
     void Update()
     {
         CameraPositionStart();  //Actualiza la posicion de la camara
-        CameraSpeed();          //Cambia la velocidad de la camara según el jugador                       
-        ReduceSpeed();          //Cuando el jugador está cerca, reduce la velocidad
-        StopCamera();           //Cuando el jugador está muy cerca, muestra el canvas y detiene la cámara
-        CameraMovement();       //Movimiento lateral de la cámara con las flechas izquierda y derecha
+        CameraSpeed();          //Cambia la velocidad de la camara segï¿½n el jugador                       
+        ReduceSpeed();          //Cuando el jugador estï¿½ cerca, reduce la velocidad
+        StopCamera();           //Cuando el jugador estï¿½ muy cerca, muestra el canvas y detiene la cï¿½mara
+        CameraMovement();       //Movimiento lateral de la cï¿½mara con las flechas izquierda y derecha
     }
     private void CameraPositionStart()
     {
-        float distanceZ = player.transform.position.z - transform.position.z;                       //calcula la distancia entre cámara y jugador
-        Vector3 newCameraPosition = transform.position + new Vector3(0, 0, Speed * Time.deltaTime); //calcula la nueva posición de la cámara
+        float distanceZ = player.transform.position.z - transform.position.z;                       //calcula la distancia entre cï¿½mara y jugador
+        Vector3 newCameraPosition = transform.position + new Vector3(0, 0, Speed * Time.deltaTime); //calcula la nueva posiciï¿½n de la cï¿½mara
         transform.position = newCameraPosition;                                                     //actualiza la posicion de la camara
     }
-    private void CameraSpeed()        //cambia la velocidad de la cámara según la distancia al jugador
+    private void CameraSpeed()        //cambia la velocidad de la cï¿½mara segï¿½n la distancia al jugador
     {
         if (distanceZ < 6)
         {
@@ -49,33 +49,33 @@ public class Cammera : MonoBehaviour
             Speed = SpeedNormal;
         }
     }
-    private void ReduceSpeed()        //cuando el jugador está cerca, reduce la velocidad   
+    private void ReduceSpeed()        //cuando el jugador estï¿½ cerca, reduce la velocidad   
     {
         if (distanceZ < 6 && distanceZ > 2)
         {
             DOTween.To(() => Speed, x => Speed = x, SpeedNormal, smoothSpeed); //cambia la velocidad a SpeedNormal con suavizado
         }
     }
-    private void StopCamera()       //cuando el jugador esaa muy cerca, muestra el canvas y detiene la cámara
+    private void StopCamera()       //cuando el jugador esaa muy cerca, muestra el canvas y detiene la cï¿½mara
     {
         if (distanceZ < 2)
         {
             canvas.enabled = true;
             Speed = 0;
-            //animación de muerte
+            //animaciï¿½n de muerte
             //quitarle el control al jugador
             //...
         }
     }
-    private void CameraMovement()       //movimiento lateral de la cámara con las flechas izquierda y derecha
+    private void CameraMovement()       //movimiento lateral de la cï¿½mara con las flechas izquierda y derecha
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))                                              //si se pulsa la flecha izquierda
         {
-            transform.DOMoveX(transform.position.x - sideMovement, sidewaisMovementDuration); //mueve la cámara a la izquierda, con duración sidewaisMovementDuration
+            transform.DOMoveX(transform.position.x - sideMovement, sidewaisMovementDuration); //mueve la cï¿½mara a la izquierda, con duraciï¿½n sidewaisMovementDuration
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))                                             //si se pulsa la flecha derecha
         {
-            transform.DOMoveX(transform.position.x + sideMovement, sidewaisMovementDuration); //mueve la cámara a la derecha, con duración sidewaisMovementDuration
+            transform.DOMoveX(transform.position.x + sideMovement, sidewaisMovementDuration); //mueve la cï¿½mara a la derecha, con duraciï¿½n sidewaisMovementDuration
         }
     }
 }
