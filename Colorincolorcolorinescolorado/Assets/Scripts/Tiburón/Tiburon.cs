@@ -16,6 +16,7 @@ public class Tiburón : MonoBehaviour
     public float animationWaitTime; //tiempo de espera entre cada frame de la animaci�
     public Vector3 posicionInicial;
     public GameObject tiburon;
+ 
 
     MeshFilter Meshfilter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
