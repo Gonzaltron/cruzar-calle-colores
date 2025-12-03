@@ -13,9 +13,10 @@ public class FloorManager : MonoBehaviour
     public Movimiento_jugador jugador; // La referencia al script del jugador
 
     private float ultimaFila = 0f;  // La posición de la ultima fila creada
-    public int filasIniciales = 10; 
+    public int filasIniciales = 10;
+    private bool ultimaEsRoja = false;
+    private bool ultimaEsNegra = false;
 
- 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -58,22 +59,32 @@ public class FloorManager : MonoBehaviour
         if (probability <= 20) // Si el número es menor o igual a 30
         {
             NextSuelo(sueloNormal, true); // Creará un suelo normal
+            ultimaEsRoja = false;
+            ultimaEsNegra = false;
         }
         else if (probability <= 40)
         {
             NextSuelo(sueloTiburon, false); // Creará un suelo con tiburones
+            ultimaEsRoja = false;
+            ultimaEsNegra = false;
         }
         else if (probability <= 60)
         {
             NextSuelo(sueloCalamar, false); // Creará un suelo con calamares
+            ultimaEsRoja = false;
+            ultimaEsNegra = false;
         }
-        else if (probability <= 80)
+        else if (!ultimaEsRoja && probability <= 80)
         {
             NextSuelo(sueloNegro, false);
+            ultimaEsNegra = true;
+            ultimaEsRoja = false;
         }
-        else
+        else if (!ultimaEsNegra && probability <= 100)
         {
             NextSuelo(sueloRojo, false);
+            ultimaEsRoja = true;
+            ultimaEsNegra = false;
         }
     }
     
