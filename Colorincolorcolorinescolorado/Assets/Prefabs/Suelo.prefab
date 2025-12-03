@@ -64,7 +64,7 @@ MonoBehaviour:
   - {fileID: 3694492025327687365}
   - {fileID: 8354161093333499311}
   tieneObstaculo: 1
-  maxObstaculos: 5
+  maxObstaculos: 0
 --- !u!1001 &81439531433041342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,6 +73,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7361632153474174507}
     m_Modifications:
+    - target: {fileID: 1256595294306066291, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: activado
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (2)
@@ -146,6 +150,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7361632153474174507}
     m_Modifications:
+    - target: {fileID: 1256595294306066291, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: activado
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (1)
@@ -219,6 +227,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7361632153474174507}
     m_Modifications:
+    - target: {fileID: 1256595294306066291, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: activado
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (7)
@@ -292,6 +304,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7361632153474174507}
     m_Modifications:
+    - target: {fileID: 1256595294306066291, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: activado
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (6)
@@ -365,6 +381,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7361632153474174507}
     m_Modifications:
+    - target: {fileID: 1256595294306066291, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: activado
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (3)
@@ -438,6 +458,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7361632153474174507}
     m_Modifications:
+    - target: {fileID: 1256595294306066291, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: activado
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (5)
@@ -511,6 +535,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7361632153474174507}
     m_Modifications:
+    - target: {fileID: 1256595294306066291, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: activado
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (8)
@@ -588,6 +616,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7361632153474174507}
     m_Modifications:
+    - target: {fileID: 1256595294306066291, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: activado
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (4)
@@ -661,6 +693,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7361632153474174507}
     m_Modifications:
+    - target: {fileID: 1256595294306066291, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: activado
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla

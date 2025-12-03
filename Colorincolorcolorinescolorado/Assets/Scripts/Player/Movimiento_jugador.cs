@@ -17,7 +17,7 @@ public class Movimiento_jugador: MonoBehaviour
     public bool dead = false;
     public Muerte muerte;
     public Canvas Canvasmarcador;
-    public int score = 0;
+    public float score = 0;
     public int highscore;
     public string CanvasMarcador;
     public TMP_Text textoMarcador;
@@ -51,11 +51,11 @@ public class Movimiento_jugador: MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.W))
         {
             direction = new Vector2(0, 1);
-            score += 1;
+            score = transform.position.z - 6.979999f;
             if (score > highscore)
             {
-                highscore = score;
-                textoMarcador.text = "Score: " + score.ToString();
+                highscore++;
+                textoMarcador.text = "Score: " + highscore.ToString();
             }
             Movement();
         }
