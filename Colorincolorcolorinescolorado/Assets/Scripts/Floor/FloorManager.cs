@@ -23,7 +23,7 @@ public class FloorManager : MonoBehaviour
         ultimaFila = posicion.z; // La última fila es la posición inicial
         for (int i = 0;  i < filasIniciales; i++) // Al inicio se crearán 10 filas
         {
-            NextSuelo(sueloNormal);
+            NextSuelo(sueloNormal, false);
         }
     }
 
@@ -31,17 +31,23 @@ public class FloorManager : MonoBehaviour
     {
         if (jugador.posicionMax >= ultimaFila - filasIniciales/2) // Si el jugador está a 5 casillas de la última fila 
         {
-            GenerateMoreSuelo(); // Se crean más filas
+            GenerateMoreSuelo(); // Se crean más filas 
         }
         else if (jugador.posicionMax >= ultimaFila + filasIniciales)
         {
             EliminarSuelo(); 
         }
     }
-   
-    void NextSuelo(GameObject tipoSuelo)
+
+    void NextSuelo(GameObject tipoSuelo, bool tieneObstaculo)
     {
-        Instantiate(tipoSuelo, posicion, Quaternion.identity, transform); // Se crea una fila de x tipo, el quaternion.identity es porque hay que tenerlo
+        GameObject nuevafila = Instantiate(tipoSuelo, posicion, Quaternion.identity, transform); // Se crea una fila de x tipo, el quaternion.identity es porque hay que tenerlo
+        if (tipoSuelo == sueloNormal)
+        {
+            Fila scriptFila = nuevafila.GetComponent<Fila>();
+            scriptFila.tieneObstaculo = tieneObstaculo;
+        }
+      
         posicion.z += 1; // La posición z aumenta en 1 para tener la posición de la siguiente fila
         ultimaFila = posicion.z; // Actualiza la posición de la ultima fila 
     }
@@ -51,23 +57,23 @@ public class FloorManager : MonoBehaviour
         int probability = Random.Range(0, 100); // Crea un número aleatorio del 0 al 100
         if (probability <= 20) // Si el número es menor o igual a 30
         {
-            NextSuelo(sueloNormal); // Creará un suelo normal
+            NextSuelo(sueloNormal, true); // Creará un suelo normal
         }
         else if (probability <= 40)
         {
-            NextSuelo(sueloTiburon); // Creará un suelo con tiburones
+            NextSuelo(sueloTiburon, false); // Creará un suelo con tiburones
         }
         else if (probability <= 60)
         {
-            NextSuelo(sueloCalamar); // Creará un suelo con calamares
+            NextSuelo(sueloCalamar, false); // Creará un suelo con calamares
         }
         else if (probability <= 80)
         {
-            NextSuelo(sueloNegro);
+            NextSuelo(sueloNegro, false);
         }
         else
         {
-            NextSuelo(sueloRojo);
+            NextSuelo(sueloRojo, false);
         }
     }
     
