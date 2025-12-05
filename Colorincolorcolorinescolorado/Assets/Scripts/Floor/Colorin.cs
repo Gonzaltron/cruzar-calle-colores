@@ -31,20 +31,10 @@ public class Colorin : MonoBehaviour
 
         if (player.CompareTag("Player"))
         {
-            if (playerColor.colorChanged == false)
-            {
-                Debug.Log("es negro");
-            }
-            else if (playerColor.colorChanged == true)
-            {
-                Debug.Log("es rojo");
-            }
-
              if (player.gameObject.GetComponent<cambio>().colorChanged == false)
-            {
+             {
                 player.gameObject.GetComponent<Muerte>();
-                Debug.Log("lalala");
-            }
+             }
         }
     }
     void OnCollisionEnter(Collision other)
