@@ -22,6 +22,7 @@ public class Movimiento_jugador: MonoBehaviour
     public string CanvasMarcador;
     public TMP_Text textoMarcador;
     private cambio playercambiocolor;
+    
    
 
     void Start()
