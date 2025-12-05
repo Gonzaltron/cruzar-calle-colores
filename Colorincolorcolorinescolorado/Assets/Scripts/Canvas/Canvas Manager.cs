@@ -3,7 +3,6 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using TMPro;
-using Unity.VisualScripting;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -25,7 +24,7 @@ public class CanvasManager : MonoBehaviour
         canvasgMarcador.interactable = false;
         canvasgMuerte.alpha = 0f;
         canvasgMuerte.interactable = false;
-        camara.enabled = false;
+        camara.activo = false;
     }
 
     // Update is called once per frame
@@ -42,6 +41,7 @@ public class CanvasManager : MonoBehaviour
         canvasgMuerte.DOFade(0f, 1f).From(1f);
         canvasgMenuPrincipal.DOFade(1f, 1f).From(0f);
         canvasgMenuPrincipal.interactable = true;
+        camara.activo = false;
     }
 
     public void CanvasMarcador()
@@ -51,7 +51,7 @@ public class CanvasManager : MonoBehaviour
         canvasgMenuPrincipal.DOFade(0f, 1f).From(1f);
         canvasgMarcador.DOFade(1f, 1f).From(0f);
         StartCoroutine(WaitAndResume());
-        camara.enabled = true;
+        camara.activo = true;
     }
 
     public void CanvasMuerte()
@@ -64,7 +64,7 @@ public class CanvasManager : MonoBehaviour
         canvasgMuerte.DOFade(1f, 0.5f).From(0f);
         canvasgMuerte.interactable = true;
         movimientoJugador.enabled = false;
-        camara.enabled = false;
+        camara.activo = false;
     }
     
 
@@ -77,7 +77,7 @@ public class CanvasManager : MonoBehaviour
     IEnumerator WaitAndResume()
     {
         yield return new WaitForSeconds(0.1f);
-        Time.timeScale = 1f;
+        camara.activo = true;
         movimientoJugador.enabled = true;
     }
 }

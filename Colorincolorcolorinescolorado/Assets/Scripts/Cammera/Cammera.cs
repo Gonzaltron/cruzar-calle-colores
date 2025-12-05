@@ -16,21 +16,36 @@ public class Cammera : MonoBehaviour
     public float sidewaisMovementDuration;  //duraci�n del movimiento lateral
     public float sideMovement;              //distancia del movimiento lateral
     private float distanceZ;
+    public bool activo;
+    bool unaVez;
     void Start()
     {
         canvas = FindObjectOfType<Canvas>();                                   //busca el canvas en la escena
         canvas.enabled = false;                                                //desactiva el canvas al inicio
         distanceZstart = player.transform.position.z - transform.position.z;   //calcula la distancia inicial entre c�mara y jugador
+        unaVez = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CameraPositionStart();  //Actualiza la posicion de la camara
-        CameraSpeed();          //Cambia la velocidad de la camara seg�n el jugador                       
-        ReduceSpeed();          //Cuando el jugador est� cerca, reduce la velocidad
-        StopCamera();           //Cuando el jugador est� muy cerca, muestra el canvas y detiene la c�mara
-        CameraMovement();       //Movimiento lateral de la c�mara con las flechas izquierda y derecha
+        if(activo)
+        {
+            CameraPositionStart();  //Actualiza la posicion de la camara
+            CameraSpeed();          //Cambia la velocidad de la camara seg�n el jugador                       
+            ReduceSpeed();          //Cuando el jugador est� cerca, reduce la velocidad
+            StopCamera();           //Cuando el jugador est� muy cerca, muestra el canvas y detiene la c�mara
+            CameraMovement();       //Movimiento lateral de la c�mara con las flechas izquierda y derecha
+        } 
+        if(!unaVez)
+        {
+            CameraPositionStart();  //Actualiza la posicion de la camara
+            CameraSpeed();          //Cambia la velocidad de la camara seg�n el jugador                       
+            ReduceSpeed();          //Cuando el jugador est� cerca, reduce la velocidad
+            StopCamera();           //Cuando el jugador est� muy cerca, muestra el canvas y detiene la c�mara
+            CameraMovement(); 
+            unaVez = true; 
+        }  
     }
     private void CameraPositionStart()
     {
