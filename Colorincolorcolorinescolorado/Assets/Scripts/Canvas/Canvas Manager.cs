@@ -3,7 +3,6 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using TMPro;
-using Unity.VisualScripting;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -13,17 +12,19 @@ public class CanvasManager : MonoBehaviour
     public Movimiento_jugador movimientoJugador;
     float ScoreMuerte;
     public TMP_Text scorefinal;
+    public bool time;
+    [SerializeField] Cammera camara;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        movimientoJugador = GetComponent<Movimiento_jugador>();
+        movimientoJugador.enabled = false;
         canvasgMenuPrincipal.interactable = true;
         canvasgMenuPrincipal.alpha = 1f;
         canvasgMarcador.alpha = 0f;
         canvasgMarcador.interactable = false;
         canvasgMuerte.alpha = 0f;
         canvasgMuerte.interactable = false;
-        Time.timeScale = 0f;
+        camara.activo = false;
     }
 
     // Update is called once per frame
@@ -34,22 +35,23 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMenuPrincpal()
     {
+        movimientoJugador.enabled = false;
         SceneManager.LoadScene("SampleScene");
         canvasgMuerte.interactable = false;
         canvasgMuerte.DOFade(0f, 1f).From(1f);
         canvasgMenuPrincipal.DOFade(1f, 1f).From(0f);
         canvasgMenuPrincipal.interactable = true;
-        movimientoJugador.enabled = false;
+        camara.activo = false;
     }
 
     public void CanvasMarcador()
     {
+        canvasgMarcador.interactable = true;
         canvasgMenuPrincipal.interactable = false;
         canvasgMenuPrincipal.DOFade(0f, 1f).From(1f);
         canvasgMarcador.DOFade(1f, 1f).From(0f);
-        canvasgMarcador.interactable = true;
-        Time.timeScale = 1f;
-        movimientoJugador.enabled = true;
+        StartCoroutine(WaitAndResume());
+        camara.activo = true;
     }
 
     public void CanvasMuerte()
@@ -62,7 +64,7 @@ public class CanvasManager : MonoBehaviour
         canvasgMuerte.DOFade(1f, 0.5f).From(0f);
         canvasgMuerte.interactable = true;
         movimientoJugador.enabled = false;
-        StartCoroutine(WaitAndPause());
+        camara.activo = false;
     }
     
 
@@ -71,9 +73,11 @@ public class CanvasManager : MonoBehaviour
         Application.Quit();
     }  
     
-    IEnumerator WaitAndPause()
+
+    IEnumerator WaitAndResume()
     {
-        yield return new WaitForSeconds(1f);
-        Time.timeScale = 0f;
+        yield return new WaitForSeconds(0.1f);
+        camara.activo = true;
+        movimientoJugador.enabled = true;
     }
 }
