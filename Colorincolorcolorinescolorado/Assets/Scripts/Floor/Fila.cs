@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 public class Fila : MonoBehaviour
 {
@@ -8,6 +9,16 @@ public class Fila : MonoBehaviour
     private bool obstaculosGenerados = false;
     public int safeIndex = -1;
     
+  
+    public IEnumerator InitializeAndGenerate(int safeIndex, bool tieneObstaculo)
+    {
+        this.safeIndex = safeIndex;
+        this.tieneObstaculo = tieneObstaculo;
+
+        yield return new WaitUntil(() => casillas != null && casillas.Count > 0);
+
+    }
+
     void Start()
     {
     }
@@ -58,7 +69,9 @@ public class Fila : MonoBehaviour
             candidates[j] = tmp;
         }
 
-        for (int k = 0; k < allowedObstaculos && k < candidates.Count; k++)
+        int maxAvailable = Mathf.Min(allowedObstaculos, candidates.Count);
+        int numObstaculos = Random.Range(0, maxAvailable + 1); 
+        for (int k = 0; k < numObstaculos; k++)
         {
             casillas[candidates[k]].ActivarObstaculo();
         }
