@@ -16,6 +16,7 @@ public class FloorManager : MonoBehaviour
     public int filasIniciales = 10;
     private bool ultimaEsRoja = false;
     private bool ultimaEsNegra = false;
+    private int currentSafeIndex = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,6 +48,34 @@ public class FloorManager : MonoBehaviour
         {
             Fila scriptFila = nuevafila.GetComponent<Fila>();
             scriptFila.tieneObstaculo = tieneObstaculo;
+
+            if (currentSafeIndex < 0)
+            {
+                if (scriptFila.casillas != null && scriptFila.casillas.Count > 0)
+                {
+                    currentSafeIndex = Random.Range(0, scriptFila.casillas.Count);
+                }
+                else
+                {
+                    currentSafeIndex = -1;
+                }
+            }
+
+            if (currentSafeIndex >= 0)
+            {
+                scriptFila.safeIndex = currentSafeIndex;
+            }
+
+            if (tieneObstaculo)
+            {
+                scriptFila.generarObstaculos();
+            }
+
+            if (scriptFila.casillas != null && scriptFila.casillas.Count > 0 && currentSafeIndex >= 0)
+            {
+                int shift = Random.Range(-1, 2);
+                currentSafeIndex = Mathf.Clamp(currentSafeIndex + shift, 0, scriptFila.casillas.Count - 1);
+            }
         }
       
         posicion.z += 1; // La posición z aumenta en 1 para tener la posición de la siguiente fila

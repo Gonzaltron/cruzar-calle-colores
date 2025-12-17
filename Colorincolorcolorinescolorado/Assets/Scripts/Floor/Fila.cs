@@ -5,55 +5,62 @@ public class Fila : MonoBehaviour
     public List<Casilla> casillas = new List<Casilla>();
     public bool tieneObstaculo = false;
     public int maxObstaculos;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool obstaculosGenerados = false;
+    public int safeIndex = -1;
+    
     void Start()
     {
-     
     }
 
-    // Update is called once per frame
     void Update()
     {
-        generarObstaculos(this);
     }
 
-    public void generarObstaculos(Fila fila)
+    public void generarObstaculos()
     {
-        if (tieneObstaculo)
-        {
-            if (maxObstaculos <= 0)
-            {
-                return;
-            }
-            int cont = 0;
-            int maxContObstaculos = 2;
-            for (int i = 0; i < casillas.Count; i++)
-            {
-                bool[] lastFila = new bool[casillas.Count];
-                for (int j=0; j < lastFila.Length; j++)
-                {
-                    lastFila[j] = fila.casillas[i];
-                    if (lastFila[j] == tieneObstaculo)
-                    {
-                        maxContObstaculos--;
-                        if (maxContObstaculos == 0)
-                        {
-                            fila.casillas[i].tieneObstaculo = true;
-                        }
-                        cont++;
-                    }
-                }
+        List<int> candidates = new List<int>(casillas.Count);
+        int allowedObstaculos = Mathf.Clamp(maxObstaculos, 0, Mathf.Max(0, casillas.Count - 1));
 
-                if (maxContObstaculos > 0 && Random.Range(0, 2) == 1)
-                {
-                    casillas[i].ActivarObstaculo();
-                    cont++;
-                    if (cont == maxObstaculos)
-                    {
-                        break;
-                    }
-                }
+        if (obstaculosGenerados)
+        {
+            return;
+        }
+        obstaculosGenerados = true;
+
+        if (!tieneObstaculo)
+        {
+            return;
+        }
+        if (casillas == null || casillas.Count == 0)
+        {
+            return;
+        }
+
+        if (allowedObstaculos <= 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < casillas.Count; i++)
+        {
+            if (i == safeIndex)
+            {
+                continue;
             }
+            candidates.Add(i);
+        }
+
+        for (int i = candidates.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            int tmp = candidates[i];
+            candidates[i] = candidates[j];
+            candidates[j] = tmp;
+        }
+
+        for (int k = 0; k < allowedObstaculos && k < candidates.Count; k++)
+        {
+            casillas[candidates[k]].ActivarObstaculo();
         }
     }
 }
