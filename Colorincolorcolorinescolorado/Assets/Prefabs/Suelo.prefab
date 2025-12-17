@@ -64,7 +64,8 @@ MonoBehaviour:
   - {fileID: 3694492025327687365}
   - {fileID: 8354161093333499311}
   tieneObstaculo: 1
-  maxObstaculos: 6
+  maxObstaculos: 5
+  safeIndex: -1
 --- !u!1001 &81439531433041342
 PrefabInstance:
   m_ObjectHideFlags: 0

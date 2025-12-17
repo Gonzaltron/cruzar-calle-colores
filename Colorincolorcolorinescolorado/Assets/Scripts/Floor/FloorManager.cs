@@ -31,55 +31,71 @@ public class FloorManager : MonoBehaviour
 
     void Update()
     {
-        if (jugador.posicionMax >= ultimaFila - filasIniciales/2) // Si el jugador está a 5 casillas de la última fila 
-        {
-            GenerateMoreSuelo(); // Se crean más filas 
+        if (jugador.posicionMax >= ultimaFila - filasIniciales / 2) GenerateMoreSuelo();
         }
-        else if (jugador.posicionMax >= ultimaFila + filasIniciales)
-        {
-            EliminarSuelo(); 
-        }
-    }
 
     void NextSuelo(GameObject tipoSuelo, bool tieneObstaculo)
     {
-        GameObject nuevafila = Instantiate(tipoSuelo, posicion, Quaternion.identity, transform); // Se crea una fila de x tipo, el quaternion.identity es porque hay que tenerlo
+        var nuevafila = Instantiate(tipoSuelo, posicion, Quaternion.identity, transform);
         if (tipoSuelo == sueloNormal)
         {
-            Fila scriptFila = nuevafila.GetComponent<Fila>();
-            scriptFila.tieneObstaculo = tieneObstaculo;
-
-            if (currentSafeIndex < 0)
+            var fila = nuevafila.GetComponent<Fila>();
+            int incoming = currentSafeIndex;
+            if (incoming < 0)
             {
-                if (scriptFila.casillas != null && scriptFila.casillas.Count > 0)
+                // try to find the most recent fila with a valid safeIndex so new row can align
+                for (int ci = transform.childCount - 1; ci >= 0; ci--)
                 {
-                    currentSafeIndex = Random.Range(0, scriptFila.casillas.Count);
+                    var prev = transform.GetChild(ci).GetComponent<Fila>();
+                    if (prev != null && prev.safeIndex >= 0)
+                    {
+                        incoming = prev.safeIndex;
+                        break;
+                    }
                 }
-                else
+            }
+            StartCoroutine(SetupFila(fila, incoming, tieneObstaculo));
+        }
+        posicion.z += 1;
+        ultimaFila = posicion.z;
+    }
+
+    IEnumerator SetupFila(Fila fila, int incomingSafeIndex, bool tieneObstaculo)
+    {
+        yield return new WaitUntil(() => fila.casillas != null && fila.casillas.Count > 0);
+        int count = fila.casillas.Count;
+        int chosen;
+        if (incomingSafeIndex >= 0 && incomingSafeIndex < count)
+        {
+            chosen = incomingSafeIndex;
+        }
+        else
+        {
+            if (jugador != null)
+            {
+                float px = jugador.transform.position.x;
+                float bestDist = float.MaxValue;
+                int bestIdx = 0;
+                for (int i = 0; i < count; i++)
                 {
-                    currentSafeIndex = -1;
+                    float dx = Mathf.Abs(fila.casillas[i].getPosition().x - px);
+                    if (dx < bestDist)
+                    {
+                        bestDist = dx;
+                        bestIdx = i;
+                    }
                 }
+                chosen = bestIdx;
             }
-
-            if (currentSafeIndex >= 0)
+            else
             {
-                scriptFila.safeIndex = currentSafeIndex;
-            }
-
-            if (tieneObstaculo)
-            {
-                scriptFila.generarObstaculos();
-            }
-
-            if (scriptFila.casillas != null && scriptFila.casillas.Count > 0 && currentSafeIndex >= 0)
-            {
-                int shift = Random.Range(-1, 2);
-                currentSafeIndex = Mathf.Clamp(currentSafeIndex + shift, 0, scriptFila.casillas.Count - 1);
+                chosen = count / 2; 
             }
         }
-      
-        posicion.z += 1; // La posición z aumenta en 1 para tener la posición de la siguiente fila
-        ultimaFila = posicion.z; // Actualiza la posición de la ultima fila 
+            fila.safeIndex = chosen;
+        fila.tieneObstaculo = tieneObstaculo;
+        if (tieneObstaculo) fila.generarObstaculos();
+        currentSafeIndex = Mathf.Clamp(chosen + Random.Range(-1, 2), 0, count - 1);
     }
 
     void GenerateMoreSuelo()
