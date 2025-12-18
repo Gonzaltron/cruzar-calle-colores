@@ -549,6 +549,7 @@ MonoBehaviour:
   sidewaisMovementDuration: 0.5
   sideMovement: 1
   activo: 0
+  muerte: {fileID: 1606485903}
 --- !u!1 &406044095
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,10 +721,10 @@ RectTransform:
   - {fileID: 1912913335}
   m_Father: {fileID: 2082245883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 390, y: 470}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &408352815
 CanvasGroup:
@@ -1610,6 +1611,7 @@ MonoBehaviour:
   canvasgMarcador: {fileID: 1376657628}
   canvasgMuerte: {fileID: 895558002}
   canvasgMenuPrincipal: {fileID: 408352815}
+  canvas: {fileID: 2082245882}
   movimientoJugador: {fileID: 1606485896}
   scorefinal: {fileID: 1719377486}
   time: 0
@@ -2095,6 +2097,7 @@ MonoBehaviour:
   canvasgMarcador: {fileID: 1376657628}
   canvasgMuerte: {fileID: 895558002}
   canvasgMenuPrincipal: {fileID: 408352815}
+  canvas: {fileID: 2082245882}
   movimientoJugador: {fileID: 1606485896}
   scorefinal: {fileID: 1719377486}
   time: 0
