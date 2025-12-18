@@ -31,7 +31,10 @@ public class Movimiento_jugador: MonoBehaviour
         rb2d = GetComponent<Rigidbody>();
         muerte = GetComponent<Muerte>();
         textoMarcador = GameObject.Find("CanvasMarcador").GetComponentInChildren<TMP_Text>();
-        textoMarcador.text = "Score: " + score.ToString();
+        highscore = PlayerPrefs.GetInt("Highscore", 0);
+        int initialScoreInt = Mathf.FloorToInt(score);
+        initialScoreInt = Mathf.Max(0, initialScoreInt);
+        textoMarcador.text = "Score: " + initialScoreInt.ToString() + "  Highscore: " + highscore.ToString();
         playercambiocolor = GetComponent<cambio>();
     }
 
@@ -52,18 +55,15 @@ public class Movimiento_jugador: MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.W))
         {
             direction = new Vector2(0, 1);
-            score = transform.position.z - 6.979999f;
-            if (score > highscore)
-            {
-                highscore++;
-                textoMarcador.text = "Score: " + highscore.ToString();
-            }
             Movement();
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             direction = new Vector2 (0, -1);
-            score -= 1;
+            // Prevent score from going below 0
+            score = Mathf.Max(0f, score - 1f);
+            int scoreIntAfter = Mathf.FloorToInt(score);
+            textoMarcador.text = "Score: " + Mathf.Max(0, scoreIntAfter).ToString() + "  Highscore: " + highscore.ToString();
             Movement();
         }
     }
@@ -107,7 +107,21 @@ public class Movimiento_jugador: MonoBehaviour
                 if (canMove)
                 {
                     Vector3 p = casilla.getPosition();
+                    float previousZ = transform.position.z;
                     transform.position = p;
+                    // If we moved forward (z increased), update score based on z
+                    if (transform.position.z > previousZ)
+                    {
+                        score = Mathf.Max(0f, transform.position.z - 6.979999f);
+                        int scoreInt = Mathf.FloorToInt(score);
+                        if (scoreInt > highscore)
+                        {
+                            highscore = scoreInt;
+                            PlayerPrefs.SetInt("Highscore", highscore);
+                            PlayerPrefs.Save();
+                        }
+                        textoMarcador.text = "Score: " + scoreInt.ToString() + "  Highscore: " + highscore.ToString();
+                    }
                     break;
                 }
             }
