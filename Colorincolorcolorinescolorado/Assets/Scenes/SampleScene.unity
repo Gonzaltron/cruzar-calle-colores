@@ -544,10 +544,12 @@ MonoBehaviour:
   canvas: {fileID: 2082245882}
   player: {fileID: 1606485894}
   SpeedNormal: 1
-  SpeedFast: 5
+  SpeedFast: 10
   smoothSpeed: 0.5
   sidewaisMovementDuration: 0.5
-  sideMovement: 1
+  sideMovement: 0
+  distanceZ: 0
+  activo: 0
 --- !u!1 &406044095
 GameObject:
   m_ObjectHideFlags: 0
