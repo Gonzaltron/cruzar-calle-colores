@@ -47,13 +47,13 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMarcador()
     {
+        canvas.enabled = true;
         canvasgMarcador.interactable = true;
         canvasgMenuPrincipal.interactable = false;
         canvasgMenuPrincipal.DOFade(0f, 1f).From(1f);
         canvasgMarcador.DOFade(1f, 1f).From(0f);
         StartCoroutine(WaitAndResume());
         camara.activo = true;
-        canvas.enabled = true;
     }
 
     public void CanvasMuerte()
