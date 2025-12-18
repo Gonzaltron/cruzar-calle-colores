@@ -18,11 +18,12 @@ public class Cammera : MonoBehaviour
     private float distanceZ;
     public bool activo;
     bool unaVez;
+    [SerializeField] Muerte muerte;
     void Start()
     {
-        canvas = FindObjectOfType<Canvas>();                                   //busca el canvas en la escena
-        canvas.enabled = false;                                                //desactiva el canvas al inicio
+        canvas = Object.FindFirstObjectByType<Canvas>();                       //busca el canvas en la escena
         distanceZstart = player.transform.position.z - transform.position.z;   //calcula la distancia inicial entre c�mara y jugador
+        distanceZ = distanceZstart;
         unaVez = false;
     }
 
@@ -49,7 +50,7 @@ public class Cammera : MonoBehaviour
     }
     private void CameraPositionStart()
     {
-        float distanceZ = player.transform.position.z - transform.position.z;                       //calcula la distancia entre c�mara y jugador
+        distanceZ = player.transform.position.z - transform.position.z;                       //calcula la distancia entre c�mara y jugador
         Vector3 newCameraPosition = transform.position + new Vector3(0, 0, Speed * Time.deltaTime); //calcula la nueva posici�n de la c�mara
         transform.position = newCameraPosition;                                                     //actualiza la posicion de la camara
     }
@@ -77,6 +78,7 @@ public class Cammera : MonoBehaviour
         {
             canvas.enabled = true;
             Speed = 0;
+            muerte.muerteJugador();
             //animaci�n de muerte
             //quitarle el control al jugador
             //...

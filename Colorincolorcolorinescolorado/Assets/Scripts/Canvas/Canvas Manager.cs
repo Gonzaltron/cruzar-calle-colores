@@ -9,6 +9,7 @@ public class CanvasManager : MonoBehaviour
     public CanvasGroup canvasgMarcador;
     public CanvasGroup canvasgMuerte;
     public CanvasGroup canvasgMenuPrincipal;
+    [SerializeField] Canvas canvas;
     public Movimiento_jugador movimientoJugador;
     float ScoreMuerte;
     public TMP_Text scorefinal;
@@ -46,6 +47,7 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMarcador()
     {
+        canvas.enabled = true;
         canvasgMarcador.interactable = true;
         canvasgMenuPrincipal.interactable = false;
         canvasgMenuPrincipal.DOFade(0f, 1f).From(1f);
@@ -65,6 +67,7 @@ public class CanvasManager : MonoBehaviour
         canvasgMuerte.interactable = true;
         movimientoJugador.enabled = false;
         camara.activo = false;
+        canvas.enabled = true;
     }
     
 
