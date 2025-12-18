@@ -60,9 +60,12 @@ public class CanvasManager : MonoBehaviour
     {
         canvasgMarcador.interactable = false;
         canvasgMarcador.DOFade(0f, 0.5f).From(1f);
-        ScoreMuerte = movimientoJugador.highscore;
-        scorefinal = canvasgMuerte.GetComponentInChildren<TMP_Text>();
-        scorefinal.text = "Puntuación = " + ScoreMuerte.ToString();
+        int puntuacion = Mathf.FloorToInt(movimientoJugador.score);
+        int record = movimientoJugador.highscore;
+        if (scorefinal != null)
+        {
+            scorefinal.text = "Score: " + puntuacion.ToString() + "\nHighscore: " + record.ToString();
+        }
         canvasgMuerte.DOFade(1f, 0.5f).From(0f);
         canvasgMuerte.interactable = true;
         movimientoJugador.enabled = false;
