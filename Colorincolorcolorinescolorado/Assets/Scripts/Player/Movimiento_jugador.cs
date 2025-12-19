@@ -22,6 +22,7 @@ public class Movimiento_jugador: MonoBehaviour
     public string CanvasMarcador;
     public TMP_Text textoMarcador;
     private cambio playercambiocolor;
+    private Casilla casillaActual;
     
    
 
@@ -66,6 +67,12 @@ public class Movimiento_jugador: MonoBehaviour
             textoMarcador.text = "Score: " + Mathf.Max(0, scoreIntAfter).ToString() + "  Highscore: " + highscore.ToString();
             Movement();
         }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            cambioColor();
+        }
+    
+
     }
 
     void FixedUpdate()
@@ -80,7 +87,8 @@ public class Movimiento_jugador: MonoBehaviour
     
 
     void Movement()
-    {   
+    {
+      
         Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + new Vector3(direction.x, -1, direction.y), Vector3.one*0.2f, Quaternion.identity);
         int i = 0;
 
@@ -90,15 +98,13 @@ public class Movimiento_jugador: MonoBehaviour
             Casilla casilla = hitColliders[i].GetComponent<Casilla>();
             if (casilla != null)
             {
+                casillaActual = casilla;
                 if (playercambiocolor.currentColor == casilla.color && casilla.color != 0)
                 {
                     canMove = true;
                 }
-                else if (playercambiocolor.currentColor != casilla.color && casilla.color != 0)
-                {
-                    muerte.muerteJugador();
-                    break;
-                }
+
+                    
                 if (casilla.tieneObstaculo == false)
                 {
                     canMove = true;
@@ -122,10 +128,28 @@ public class Movimiento_jugador: MonoBehaviour
                         }
                         textoMarcador.text = "Score: " + scoreInt.ToString();
                     }
+
+                    if (playercambiocolor.currentColor != casilla.color && casilla.color != 0)
+                    {
+                        canMove = false;
+                        muerte.muerteJugador();
+                        break;
+                    }
                     break;
                 }
             }
             i++;
+            
+        }
+    }
+
+    void cambioColor()
+    {
+        playercambiocolor.ChangeColor();
+
+        if (playercambiocolor.currentColor != casillaActual.color && casillaActual.color != 0)
+        {
+            muerte.muerteJugador();
         }
     }
 
@@ -137,6 +161,4 @@ public class Movimiento_jugador: MonoBehaviour
             muerte.muerteJugador();
         }
     }
-
-
 }
