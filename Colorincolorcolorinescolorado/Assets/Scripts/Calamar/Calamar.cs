@@ -18,7 +18,6 @@ public class Calamar : MonoBehaviour
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>(); //encuentra el canvas en la escena y lo asigna a la variable
         malla = mallaVivo; //asigna la mallaVivo a la variable malla
         this.GetComponent<MeshFilter>().mesh = mallaVivo; //asigna la mallaVivo al MeshFilter (lo que hace que el calamar se vea de una forma u otra) del calamar
-        canvas.enabled = false; //se asegura de que el canvas no se muestre en pantalla al inicio
     }
 
     // Update is called once per frame

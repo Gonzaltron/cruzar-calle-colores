@@ -34,7 +34,7 @@ public class Movimiento_jugador: MonoBehaviour
         highscore = PlayerPrefs.GetInt("Highscore", 0);
         int initialScoreInt = Mathf.FloorToInt(score);
         initialScoreInt = Mathf.Max(0, initialScoreInt);
-        textoMarcador.text = "Score: " + initialScoreInt.ToString() + "  Highscore: " + highscore.ToString();
+        textoMarcador.text = "Score: " + initialScoreInt.ToString();
         playercambiocolor = GetComponent<cambio>();
     }
 
@@ -120,7 +120,7 @@ public class Movimiento_jugador: MonoBehaviour
                             PlayerPrefs.SetInt("Highscore", highscore);
                             PlayerPrefs.Save();
                         }
-                        textoMarcador.text = "Score: " + scoreInt.ToString() + "  Highscore: " + highscore.ToString();
+                        textoMarcador.text = "Score: " + scoreInt.ToString();
                     }
                     break;
                 }

@@ -32,21 +32,28 @@ public class Cammera : MonoBehaviour
     {
         if(activo)
         {
-            CameraPositionStart();  //Actualiza la posicion de la camara
-            CameraSpeed();          //Cambia la velocidad de la camara seg�n el jugador                       
-            ReduceSpeed();          //Cuando el jugador est� cerca, reduce la velocidad
-            StopCamera();           //Cuando el jugador est� muy cerca, muestra el canvas y detiene la c�mara
+            CameraPositionStart();  //Actualiza la posicion de la camara                      
             CameraMovement();       //Movimiento lateral de la c�mara con las flechas izquierda y derecha
         } 
         if(!unaVez)
         {
-            CameraPositionStart();  //Actualiza la posicion de la camara
-            CameraSpeed();          //Cambia la velocidad de la camara seg�n el jugador                       
-            ReduceSpeed();          //Cuando el jugador est� cerca, reduce la velocidad
-            StopCamera();           //Cuando el jugador est� muy cerca, muestra el canvas y detiene la c�mara
+            CameraPositionStart();  //Actualiza la posicion de la camara                       
             CameraMovement(); 
             unaVez = true; 
         }  
+
+        if(distanceZ < 20 && distanceZ > 2)
+        {
+            ReduceSpeed();
+        }
+        else if(distanceZ >= 20)
+        {
+            CameraSpeedFast();
+        }
+        else if(distanceZ <= 2)
+        {
+            StopCamera();
+        }
     }
     private void CameraPositionStart()
     {
@@ -54,35 +61,22 @@ public class Cammera : MonoBehaviour
         Vector3 newCameraPosition = transform.position + new Vector3(0, 0, Speed * Time.deltaTime); //calcula la nueva posici�n de la c�mara
         transform.position = newCameraPosition;                                                     //actualiza la posicion de la camara
     }
-    private void CameraSpeed()        //cambia la velocidad de la c�mara seg�n la distancia al jugador
+    private void CameraSpeedFast()    //cambia la velocidad de la c�mara a SpeedFast
     {
-        if (distanceZ < 6)
-        {
-            DOTween.To(() => Speed, x => Speed = x, SpeedNormal, smoothSpeed);  //cambia la velocidad a SpeedFast con suavizado
-        }
-        else
-        {
-            Speed = SpeedNormal;
-        }
+        DOTween.To(() => Speed, x => Speed = x, SpeedFast, smoothSpeed); //cambia la velocidad a SpeedFast con suavizado
     }
     private void ReduceSpeed()        //cuando el jugador est� cerca, reduce la velocidad   
     {
-        if (distanceZ < 6 && distanceZ > 2)
-        {
             DOTween.To(() => Speed, x => Speed = x, SpeedNormal, smoothSpeed); //cambia la velocidad a SpeedNormal con suavizado
-        }
     }
     private void StopCamera()       //cuando el jugador esaa muy cerca, muestra el canvas y detiene la c�mara
     {
-        if (distanceZ < 2)
-        {
             canvas.enabled = true;
             Speed = 0;
             muerte.muerteJugador();
             //animaci�n de muerte
             //quitarle el control al jugador
             //...
-        }
     }
     private void CameraMovement()       //movimiento lateral de la c�mara con las flechas izquierda y derecha
     {

@@ -52,6 +52,8 @@ public class CanvasManager : MonoBehaviour
         canvasgMenuPrincipal.interactable = false;
         canvasgMenuPrincipal.DOFade(0f, 1f).From(1f);
         canvasgMarcador.DOFade(1f, 1f).From(0f);
+        canvasgMuerte.DOFade(0f, 1f).From(1f);
+        canvasgMuerte.interactable = false;
         StartCoroutine(WaitAndResume());
         camara.activo = true;
     }
@@ -70,7 +72,6 @@ public class CanvasManager : MonoBehaviour
         canvasgMuerte.interactable = true;
         movimientoJugador.enabled = false;
         camara.activo = false;
-        canvas.enabled = true;
     }
     
 

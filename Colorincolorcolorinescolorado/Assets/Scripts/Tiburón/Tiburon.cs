@@ -25,7 +25,6 @@ public class Tiburón : MonoBehaviour
     {
         posicionInicial = gameObject.transform.position;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>(); //Busca el canvas en la escena, y lo asigna a l avariable
-        canvas.enabled = false; //se asegura de que el canvas no se muestre en pantalla al inicio
         Meshfilter = GetComponent<MeshFilter>();
         StartCoroutine(Animation());
     }
