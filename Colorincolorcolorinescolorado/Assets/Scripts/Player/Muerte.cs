@@ -25,7 +25,6 @@ public class Muerte : MonoBehaviour
 
     public void muerteJugador()
     {
-        Debug.Log("muerto");
         movimientoJugador.enabled = false;
         jugador.material.DOFade(0f, 1f);
         Cammera cam = camara.GetComponent<Cammera>();

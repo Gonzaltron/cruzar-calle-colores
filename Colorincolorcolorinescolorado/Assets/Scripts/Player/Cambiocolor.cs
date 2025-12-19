@@ -12,7 +12,7 @@ public class cambio : MonoBehaviour
 
     public Color newColor;
     public int currentColor;
-
+    Casilla casilla;
 
     public bool colorChanged = false;   
     void Start()
@@ -25,18 +25,21 @@ public class cambio : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))        //Seleccionar la tecla E para cambiar el color
         {
-            if (!colorChanged)      
-            {
-                ChangeColorMethod(newColor);        //Cambiar el color inicial al segundo color si el inicial est� puesto
-
-            }
-            else
-            {
-                ChangeColorMethod(defaultColor);    //Si el color inicial no est� seleccionado entonces significa que est� el secundario puesto por lo tanto se cambia al inicial 
-            }
+          
         }
     }
+    public void ChangeColor()
+    {
+        if (!colorChanged)
+        {
+            ChangeColorMethod(newColor);        //Cambiar el color inicial al segundo color si el inicial est� puesto
 
+        }
+        else
+        {
+            ChangeColorMethod(defaultColor);    //Si el color inicial no est� seleccionado entonces significa que est� el secundario puesto por lo tanto se cambia al inicial 
+        }
+    }
  
     public void ChangeColorMethod(Color colorToChange)
     {
