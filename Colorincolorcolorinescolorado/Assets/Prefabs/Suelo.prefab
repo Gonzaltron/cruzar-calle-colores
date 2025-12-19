@@ -163,9 +163,21 @@ PrefabInstance:
       propertyPath: activado
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1755866557119438383, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8469494145858465668, guid: f670984db7d86804f97c321addf77fb0, type: 3}
+    - target: {fileID: 6722695375804365241, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: f670984db7d86804f97c321addf77fb0, type: 3}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472148853608957677, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7535619563291213801, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -765,6 +777,10 @@ PrefabInstance:
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472148853608957677, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7535619563291213801, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_LocalPosition.x
