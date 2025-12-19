@@ -78,6 +78,14 @@ PrefabInstance:
       propertyPath: activado
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1755866557119438383, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8469494145858465668, guid: 41f70217f49c42444afb1ac10deb430f, type: 3}
+    - target: {fileID: 6722695375804365241, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 41f70217f49c42444afb1ac10deb430f, type: 3}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (2)
@@ -232,6 +240,14 @@ PrefabInstance:
       propertyPath: activado
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1755866557119438383, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8469494145858465668, guid: f670984db7d86804f97c321addf77fb0, type: 3}
+    - target: {fileID: 6722695375804365241, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: f670984db7d86804f97c321addf77fb0, type: 3}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (7)
@@ -309,6 +325,14 @@ PrefabInstance:
       propertyPath: activado
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1755866557119438383, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8469494145858465668, guid: 41f70217f49c42444afb1ac10deb430f, type: 3}
+    - target: {fileID: 6722695375804365241, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 41f70217f49c42444afb1ac10deb430f, type: 3}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (6)
@@ -386,6 +410,14 @@ PrefabInstance:
       propertyPath: activado
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1755866557119438383, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8469494145858465668, guid: 41f70217f49c42444afb1ac10deb430f, type: 3}
+    - target: {fileID: 6722695375804365241, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 41f70217f49c42444afb1ac10deb430f, type: 3}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (3)
@@ -463,6 +495,14 @@ PrefabInstance:
       propertyPath: activado
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1755866557119438383, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8469494145858465668, guid: 41f70217f49c42444afb1ac10deb430f, type: 3}
+    - target: {fileID: 6722695375804365241, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 41f70217f49c42444afb1ac10deb430f, type: 3}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (5)
@@ -540,6 +580,14 @@ PrefabInstance:
       propertyPath: activado
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1755866557119438383, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8469494145858465668, guid: 41f70217f49c42444afb1ac10deb430f, type: 3}
+    - target: {fileID: 6722695375804365241, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 41f70217f49c42444afb1ac10deb430f, type: 3}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (8)
@@ -621,6 +669,14 @@ PrefabInstance:
       propertyPath: activado
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1755866557119438383, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8469494145858465668, guid: f670984db7d86804f97c321addf77fb0, type: 3}
+    - target: {fileID: 6722695375804365241, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: f670984db7d86804f97c321addf77fb0, type: 3}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla (4)
@@ -698,6 +754,14 @@ PrefabInstance:
       propertyPath: activado
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1755866557119438383, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8469494145858465668, guid: f670984db7d86804f97c321addf77fb0, type: 3}
+    - target: {fileID: 6722695375804365241, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: f670984db7d86804f97c321addf77fb0, type: 3}
     - target: {fileID: 7460343193918706681, guid: ec3e4f8defea47c4aa764e24a3c3708a, type: 3}
       propertyPath: m_Name
       value: Casilla
