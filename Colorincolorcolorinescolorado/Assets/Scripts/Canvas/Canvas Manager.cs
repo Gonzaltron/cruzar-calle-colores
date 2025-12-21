@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Profiling;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class CanvasManager : MonoBehaviour
     public TMP_Text scorefinal;
     public bool time;
     [SerializeField] Cammera camara;
+    [SerializeField] TMP_Text record;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,6 +28,7 @@ public class CanvasManager : MonoBehaviour
         canvasgMuerte.alpha = 0f;
         canvasgMuerte.interactable = false;
         camara.activo = false;
+        record.text = "Record: " + PlayerPrefs.GetInt("Record", 0).ToString();
     }
 
     // Update is called once per frame
@@ -39,6 +42,7 @@ public class CanvasManager : MonoBehaviour
         movimientoJugador.enabled = false;
         SceneManager.LoadScene("SampleScene");
         canvasgMuerte.interactable = false;
+        record.text = "Record: " + PlayerPrefs.GetInt("Record", 0).ToString();
         canvasgMuerte.DOFade(0f, 1f).From(1f);
         canvasgMenuPrincipal.DOFade(1f, 1f).From(0f);
         canvasgMenuPrincipal.interactable = true;
@@ -69,6 +73,8 @@ public class CanvasManager : MonoBehaviour
             scorefinal.text = "Score: " + puntuacion.ToString() + "\nHighscore: " + record.ToString();
         }
         canvasgMuerte.DOFade(1f, 0.5f).From(0f);
+        PlayerPrefs.SetInt("Record", record);
+        PlayerPrefs.Save();
         canvasgMuerte.interactable = true;
         movimientoJugador.enabled = false;
         camara.activo = false;
