@@ -42,15 +42,15 @@ public class Cammera : MonoBehaviour
             unaVez = true; 
         }  
 
-        if(distanceZ < 20 && distanceZ > 2)
+        if(distanceZ < 6 && distanceZ > 0)
         {
             ReduceSpeed();
         }
-        else if(distanceZ >= 20)
+        else if(distanceZ >= 6)
         {
             CameraSpeedFast();
         }
-        else if(distanceZ <= 2)
+        else if(distanceZ <= 0)
         {
             StopCamera();
         }

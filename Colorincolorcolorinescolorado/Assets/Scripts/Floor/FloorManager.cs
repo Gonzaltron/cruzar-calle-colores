@@ -8,12 +8,12 @@ public class FloorManager : MonoBehaviour
     public GameObject sueloTiburon;
     public GameObject sueloRojo;
     public GameObject sueloNegro;
-    public Transform posicionInicial; // Posición donde se empiezan a crear las filas
-    private Vector3 posicion; // Posición donde crear la siguiente fila
+    public Transform posicionInicial; // Posiciï¿½n donde se empiezan a crear las filas
+    private Vector3 posicion; // Posiciï¿½n donde crear la siguiente fila
     public Movimiento_jugador jugador; // La referencia al script del jugador
 
-    private float ultimaFila = 0f;  // La posición de la ultima fila creada
-    public int filasIniciales = 20;
+    private float ultimaFila = 0f;  // La posiciï¿½n de la ultima fila creada
+    public int filasIniciales = 30;
     private bool ultimaEsRoja = false;
     private bool ultimaEsNegra = false;
     private int currentSafeIndex = -1;
@@ -21,9 +21,9 @@ public class FloorManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        posicion = posicionInicial.position; // Posición donde las filas empiezan a crearse
-        ultimaFila = posicion.z; // La última fila es la posición inicial
-        for (int i = 0;  i < filasIniciales; i++) // Al inicio se crearán 10 filas
+        posicion = posicionInicial.position; // Posiciï¿½n donde las filas empiezan a crearse
+        ultimaFila = posicion.z; // La ï¿½ltima fila es la posiciï¿½n inicial
+        for (int i = 0;  i < filasIniciales; i++) // Al inicio se crearï¿½n 10 filas
         {
             NextSuelo(sueloNormal, false);
         }
@@ -103,22 +103,22 @@ public class FloorManager : MonoBehaviour
 
     void GenerateMoreSuelo()
     {
-        int probability = Random.Range(0, 100); // Crea un número aleatorio del 0 al 100
-        if (probability <= 20) // Si el número es menor o igual a 30
+        int probability = Random.Range(0, 100); // Crea un nï¿½mero aleatorio del 0 al 100
+        if (probability <= 20) // Si el nï¿½mero es menor o igual a 30
         {
-            NextSuelo(sueloNormal, true); // Creará un suelo normal
+            NextSuelo(sueloNormal, true); // Crearï¿½ un suelo normal
             ultimaEsRoja = false;
             ultimaEsNegra = false;
         }
         else if (probability <= 40)
         {
-            NextSuelo(sueloTiburon, false); // Creará un suelo con tiburones
+            NextSuelo(sueloTiburon, false); // Crearï¿½ un suelo con tiburones
             ultimaEsRoja = false;
             ultimaEsNegra = false;
         }
         else if (probability <= 60)
         {
-            NextSuelo(sueloCalamar, false); // Creará un suelo con calamares
+            NextSuelo(sueloCalamar, false); // Crearï¿½ un suelo con calamares
             ultimaEsRoja = false;
             ultimaEsNegra = false;
         }
