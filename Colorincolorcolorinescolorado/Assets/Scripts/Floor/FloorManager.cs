@@ -13,7 +13,7 @@ public class FloorManager : MonoBehaviour
     public Movimiento_jugador jugador; // La referencia al script del jugador
 
     private float ultimaFila = 0f;  // La posición de la ultima fila creada
-    public int filasIniciales = 10;
+    public int filasIniciales = 20;
     private bool ultimaEsRoja = false;
     private bool ultimaEsNegra = false;
     private int currentSafeIndex = -1;
@@ -31,8 +31,11 @@ public class FloorManager : MonoBehaviour
 
     void Update()
     {
-        if (jugador.posicionMax >= ultimaFila - filasIniciales / 2) GenerateMoreSuelo();
+        if (jugador.posicionMax >= ultimaFila - filasIniciales)
+        {
+            GenerateMoreSuelo();
         }
+    }
 
     void NextSuelo(GameObject tipoSuelo, bool tieneObstaculo)
     {
