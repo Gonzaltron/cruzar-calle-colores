@@ -17,10 +17,16 @@ public class CanvasManager : MonoBehaviour
     public bool time;
     [SerializeField] Cammera camara;
     [SerializeField] TMP_Text record;
+    [SerializeField] private GameObject botonResume;
+    [SerializeField] private GameObject botonPausa;
+    [SerializeField] private GameObject botonReturn;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         movimientoJugador.enabled = false;
+        botonPausa.SetActive(false);
+        botonResume.SetActive(false);
+        botonReturn.SetActive(false);
         canvasgMenuPrincipal.interactable = true;
         canvasgMenuPrincipal.alpha = 1f;
         canvasgMarcador.alpha = 0f;
@@ -53,6 +59,9 @@ public class CanvasManager : MonoBehaviour
     {
         canvas.enabled = true;
         canvasgMarcador.interactable = true;
+        // Show the pause button once the game actually starts
+        if (botonPausa != null) botonPausa.SetActive(true);
+        if (botonResume != null) botonResume.SetActive(false);
         canvasgMenuPrincipal.interactable = false;
         canvasgMenuPrincipal.DOFade(0f, 1f).From(1f);
         canvasgMarcador.DOFade(1f, 1f).From(0f);
@@ -80,11 +89,34 @@ public class CanvasManager : MonoBehaviour
         camara.activo = false;
     }
     
-
-    public void Salir()
+    public void Pausa()
     {
-        Application.Quit();
-    }  
+        Time.timeScale = 0f;
+        botonPausa.SetActive(false);
+        botonResume.SetActive(true);
+        botonReturn.SetActive(true);
+        movimientoJugador.enabled = false;
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        botonPausa.SetActive(true);
+        botonResume.SetActive(false);
+        botonReturn.SetActive(false);
+        movimientoJugador.enabled = true;
+    }
+
+
+
+    public void Returns()
+    {
+        botonPausa.SetActive(false);
+        botonResume.SetActive(false);
+        botonReturn.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("SampleScene");
+    }
     
 
     IEnumerator WaitAndResume()

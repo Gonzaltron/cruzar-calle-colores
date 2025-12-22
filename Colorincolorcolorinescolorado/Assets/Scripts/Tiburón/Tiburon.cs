@@ -31,7 +31,7 @@ public class Tiburón : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(-0.04f, 0, speed * Time.deltaTime); //se mueve en z, invertir speed para que vaya a -z
+        transform.Translate(speed * Time.deltaTime, 0, 0); //se mueve en z, invertir speed para que vaya a -z
     }
 
  
