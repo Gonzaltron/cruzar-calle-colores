@@ -541,7 +541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8196183885550956719, guid: 0d7650d6e0277314e88d601c11cce6dd, type: 3}
       propertyPath: speed
-      value: 0.1
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8196183885550956719, guid: 0d7650d6e0277314e88d601c11cce6dd, type: 3}
       propertyPath: tiburon
