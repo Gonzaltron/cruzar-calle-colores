@@ -479,7 +479,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0.38002887, y: 0.20888922, z: -0.046629105, w: -0.89987177}
-  m_LocalPosition: {x: 5.16, y: 9.384217, z: 2.8}
+  m_LocalPosition: {x: 5.16, y: 9.384217, z: -2.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2340,7 +2340,7 @@ MonoBehaviour:
   sueloNegro: {fileID: 8179983075078875020, guid: d9aa8e7e29ac93448855df34ec7d06e9, type: 3}
   posicionInicial: {fileID: 1584871372}
   jugador: {fileID: 1606485896}
-  filasIniciales: 10
+  filasIniciales: 15
 --- !u!4 &1584871372
 Transform:
   m_ObjectHideFlags: 0
@@ -2515,7 +2515,7 @@ Transform:
   m_GameObject: {fileID: 1606485894}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.729, y: -0.21, z: 6.9799986}
+  m_LocalPosition: {x: 0.729, y: -0.21, z: 1.23}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3200,7 +3200,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082245879}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 330585545}
