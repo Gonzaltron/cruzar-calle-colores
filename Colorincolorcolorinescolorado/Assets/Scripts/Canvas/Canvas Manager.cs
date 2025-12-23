@@ -45,6 +45,7 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMenuPrincpal()
     {
+        Debug.Log("MenuPrincipal");
         movimientoJugador.enabled = false;
         SceneManager.LoadScene("SampleScene");
         canvasgMuerte.interactable = false;
@@ -57,6 +58,7 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMarcador()
     {
+        Debug.Log("Marcador");
         canvas.enabled = true;
         canvasgMarcador.interactable = true;
         // Show the pause button once the game actually starts
@@ -73,6 +75,7 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMuerte()
     {
+        Debug.Log("Muerte");
         canvasgMarcador.interactable = false;
         canvasgMarcador.DOFade(0f, 0.5f).From(1f);
         int puntuacion = Mathf.FloorToInt(movimientoJugador.score);

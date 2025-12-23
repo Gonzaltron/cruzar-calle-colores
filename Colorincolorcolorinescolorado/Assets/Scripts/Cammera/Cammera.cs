@@ -18,6 +18,7 @@ public class Cammera : MonoBehaviour
     private float distanceZ;
     public bool activo;
     bool unaVez;
+    bool perdido = false;
     [SerializeField] Muerte muerte;
     void Start()
     {
@@ -50,8 +51,9 @@ public class Cammera : MonoBehaviour
         {
             CameraSpeedFast();
         }
-        else if(distanceZ <= 0)
+        else if(distanceZ <= 0 && !perdido)
         {
+            perdido = true;
             StopCamera();
         }
     }
@@ -71,12 +73,8 @@ public class Cammera : MonoBehaviour
     }
     private void StopCamera()       //cuando el jugador esaa muy cerca, muestra el canvas y detiene la c�mara
     {
-            canvas.enabled = true;
             Speed = 0;
             muerte.muerteJugador();
-            //animaci�n de muerte
-            //quitarle el control al jugador
-            //...
     }
     private void CameraMovement()       //movimiento lateral de la c�mara con las flechas izquierda y derecha
     {
