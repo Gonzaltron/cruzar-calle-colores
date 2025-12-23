@@ -11,6 +11,7 @@ public class Calamar : MonoBehaviour
     public Mesh mallaMuerto; //mall del calamar muerto
     Mesh malla; //variabkle malla para programar mas comodo
     public Canvas canvas; //variable del canvas
+    bool a = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,8 +26,9 @@ public class Calamar : MonoBehaviour
     {
         this.GetComponent<MeshFilter>().mesh = malla; //asigna la malla (vivo o muerto) al MeshFilter del calamar
         transform.Translate(speed * Time.deltaTime, 0, 0); //se mueve en z, invertir speed para que vaya a -z
-        if (isOnSquid) //si el jugador est� sobre el calamar
+        if (isOnSquid && !a) //si el jugador est� sobre el calamar
         {
+            a = true;
             StartCoroutine(time()); //llama a la corrutina
         }
 
