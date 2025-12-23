@@ -1206,7 +1206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 117, y: -164}
+  m_AnchoredPosition: {x: 133.5015, y: -164}
   m_SizeDelta: {x: 160.997, y: 154.998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &563994554
@@ -1339,7 +1339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9, y: -165}
+  m_AnchoredPosition: {x: 5, y: -165}
   m_SizeDelta: {x: 160.997, y: 154.998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &626710792
@@ -1472,7 +1472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -145.5015, y: -163.50099}
+  m_AnchoredPosition: {x: -129, y: -163.50099}
   m_SizeDelta: {x: 160.997, y: 154.998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &728621717
@@ -2246,7 +2246,6 @@ MonoBehaviour:
   sueloTiburon: {fileID: 8179983075078875020, guid: 166d1bc4387a40d4f9404a38c2a391f2, type: 3}
   sueloTiburon2: {fileID: 8179983075078875020, guid: 7b36432166878204592117dc812ffae8, type: 3}
   sueloTiburon3: {fileID: 8179983075078875020, guid: bc298586797572447a965f3667097b34, type: 3}
-  sueloTiburon4: {fileID: 8179983075078875020, guid: 0cf47e5e8103cb24ca5ea19f42f1c470, type: 3}
   sueloRojo: {fileID: 8179983075078875020, guid: 182cba890dcbb3044972b65fdb6b00b9, type: 3}
   sueloNegro: {fileID: 8179983075078875020, guid: d9aa8e7e29ac93448855df34ec7d06e9, type: 3}
   posicionInicial: {fileID: 1584871372}
