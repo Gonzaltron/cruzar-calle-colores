@@ -43,7 +43,7 @@ public class Cammera : MonoBehaviour
             unaVez = true; 
         }  
 
-        if(distanceZ < 6 && distanceZ > 0)
+        if(distanceZ < 6 && distanceZ > -2)
         {
             ReduceSpeed();
         }
@@ -51,7 +51,7 @@ public class Cammera : MonoBehaviour
         {
             CameraSpeedFast();
         }
-        else if(distanceZ <= 0 && !perdido)
+        else if(distanceZ <= -2 && !perdido)
         {
             perdido = true;
             StopCamera();
