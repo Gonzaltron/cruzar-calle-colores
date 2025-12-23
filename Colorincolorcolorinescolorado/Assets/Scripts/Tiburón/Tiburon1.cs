@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 
-public class Tiburón : MonoBehaviour
+public class Tiburón2 : MonoBehaviour
 {
     public Canvas canvas;
     [SerializeField] float speed; //variable de velocidad
@@ -40,7 +40,7 @@ public class Tiburón : MonoBehaviour
         if (other.gameObject.CompareTag("trigger"))
         {
             float newZ = transform.position.z;
-            transform.position = new Vector3(4,0,newZ);
+            transform.position = new Vector3(-4,0,newZ);
         }
 
         if (other.gameObject.CompareTag("Player"))

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 368222546669795987}
   - component: {fileID: 5473261137944964886}
   - component: {fileID: 5067663075186229388}
+  - component: {fileID: 5368161274159842379}
   - component: {fileID: 8196183885550956719}
   - component: {fileID: -317357687840318550}
   m_Layer: 0
@@ -113,6 +114,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4321909, y: 1, z: 0.6764498}
   m_Center: {x: -0.21609545, y: 0, z: -0.048277378}
+--- !u!114 &5368161274159842379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3671635355476647313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0ed5a363cb58446a9ee32cab0bed68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: "Assembly-CSharp::Tibur\xF3n2"
+  canvas: {fileID: 0}
+  speed: -2
+  Tibu1: {fileID: -2432090755550338912, guid: e1caa0f33a2f9dc4aacd4edf66ad663c, type: 3}
+  Tibu2: {fileID: -2432090755550338912, guid: 5dec187aec5009f46abcd517ed57c39c, type: 3}
+  Tibu3: {fileID: -2432090755550338912, guid: cddba5c733347f74fadb3893e99546c8, type: 3}
+  Tibu4: {fileID: -2432090755550338912, guid: dce2942e5d971be4fb02853e96573f6d, type: 3}
+  Tibu5: {fileID: -2432090755550338912, guid: 5d7c112965277fe4ea82ddbe295711d7, type: 3}
+  Tibu6: {fileID: -2432090755550338912, guid: 5d7c112965277fe4ea82ddbe295711d7, type: 3}
+  Tibu7: {fileID: -2432090755550338912, guid: 41aa7ea51c6f2a040b68836b08bd88bc, type: 3}
+  animationWaitTime: 0.1
+  posicionInicial: {x: 0, y: 0, z: 0}
+  tiburon: {fileID: 3671635355476647313}
 --- !u!114 &8196183885550956719
 MonoBehaviour:
   m_ObjectHideFlags: 0
