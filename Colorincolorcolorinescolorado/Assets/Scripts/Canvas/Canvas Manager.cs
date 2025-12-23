@@ -34,7 +34,19 @@ public class CanvasManager : MonoBehaviour
         canvasgMuerte.alpha = 0f;
         canvasgMuerte.interactable = false;
         camara.activo = false;
-        record.text = "Record: " + PlayerPrefs.GetInt("Record", 0).ToString();
+        int saved = PlayerPrefs.GetInt("Record", 0);
+        if (record != null)
+        {
+            if (saved > 0)
+            {
+                record.text = "Record: " + saved.ToString();
+                record.gameObject.SetActive(true);
+            }
+            else
+            {
+                record.gameObject.SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -47,9 +59,21 @@ public class CanvasManager : MonoBehaviour
     {
         Debug.Log("MenuPrincipal");
         movimientoJugador.enabled = false;
+        int saved = PlayerPrefs.GetInt("Record", 0);
+        if (record != null)
+        {
+            if (saved > 0)
+            {
+                record.text = "Record: " + saved.ToString();
+                record.gameObject.SetActive(true);
+            }
+            else
+            {
+                record.gameObject.SetActive(false);
+            }
+        }
         SceneManager.LoadScene("SampleScene");
         canvasgMuerte.interactable = false;
-        record.text = "Record: " + PlayerPrefs.GetInt("Record", 0).ToString();
         canvasgMuerte.DOFade(0f, 1f).From(1f);
         canvasgMenuPrincipal.DOFade(1f, 1f).From(0f);
         canvasgMenuPrincipal.interactable = true;
@@ -61,7 +85,6 @@ public class CanvasManager : MonoBehaviour
         Debug.Log("Marcador");
         canvas.enabled = true;
         canvasgMarcador.interactable = true;
-        // Show the pause button once the game actually starts
         if (botonPausa != null) botonPausa.SetActive(true);
         if (botonResume != null) botonResume.SetActive(false);
         canvasgMenuPrincipal.interactable = false;
