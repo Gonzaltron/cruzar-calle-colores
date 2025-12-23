@@ -6,6 +6,7 @@ public class FloorManager : MonoBehaviour
     public GameObject sueloNormal;
     public GameObject sueloCalamar;
     public GameObject sueloTiburon;
+    public GameObject sueloTiburon2;
     public GameObject sueloRojo;
     public GameObject sueloNegro;
     public Transform posicionInicial; // Posici�n donde se empiezan a crear las filas
@@ -110,9 +111,15 @@ public class FloorManager : MonoBehaviour
             ultimaEsRoja = false;
             ultimaEsNegra = false;
         }
-        else if (probability <= 40)
+        else if (probability <= 35)
         {
             NextSuelo(sueloTiburon, false); // Crear� un suelo con tiburones
+            ultimaEsRoja = false;
+            ultimaEsNegra = false;
+        }
+        else if (probability <= 55)
+        {
+            NextSuelo(sueloTiburon2, false); // Crear� un suelo con tiburones
             ultimaEsRoja = false;
             ultimaEsNegra = false;
         }
