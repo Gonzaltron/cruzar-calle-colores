@@ -129,7 +129,7 @@ MonoBehaviour:
   TimeOnSquid: 2.5
   dead: 0
   mallaVivo: {fileID: 0}
-  mallaMuerto: {fileID: 0}
+  mallaMuerto: {fileID: -2432090755550338912, guid: 08439ca5376694e4e88a74139e38a42a, type: 3}
   canvas: {fileID: 0}
 --- !u!54 &7529756972749754865
 Rigidbody:

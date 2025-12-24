@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class Calamar : MonoBehaviour
@@ -24,10 +25,12 @@ public class Calamar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         this.GetComponent<MeshFilter>().mesh = malla;               //asigna la malla (vivo o muerto) al MeshFilter del calamar
         transform.Translate(speed * Time.deltaTime, 0, 0);          //se mueve en z, invertir speed para que vaya a -z
         if (isOnSquid && !a)                                        //si el jugador est� sobre el calamar
         {
+            
             a = true;
             StartCoroutine(time());                                 //llama a la corrutina
         }
@@ -39,7 +42,7 @@ public class Calamar : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision other)                          //cuando hay una colision
+    public void OnCollisionEnter(Collision other)                   //cuando hay una colision
     {
         if (other.gameObject.CompareTag("Player"))                  //si el otro objeto tiene el tag player
         {
@@ -48,7 +51,7 @@ public class Calamar : MonoBehaviour
         }
     }
 
-    void OnCollisionStay(Collision other)                           //mientras haya una colision
+    public void OnCollisionStay(Collision other)                    //mientras haya una colision
     {
         if (other.gameObject.CompareTag("Player") && dead == true)  //si el otro objeto tiene el tag player y el calamar est� muerto
         {
@@ -57,7 +60,7 @@ public class Calamar : MonoBehaviour
         }
     }
 
-    void OnCollisionExit(Collision other)                           //cuando la colision termina
+    public void OnCollisionExit(Collision other)                    //cuando la colision termina
     {
         if (other.gameObject.CompareTag("Player"))                  //si el otro objeto tiene el tag player
         {
@@ -69,5 +72,6 @@ public class Calamar : MonoBehaviour
     {
         yield return new WaitForSeconds(TimeOnSquid);               //espera el tiempo asignado en TimeOnSquid
         dead = true;                                                //cambia el booleano a true (el calamar est� muerto)
+        
     }
 }
