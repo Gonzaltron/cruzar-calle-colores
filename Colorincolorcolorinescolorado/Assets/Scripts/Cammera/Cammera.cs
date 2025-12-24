@@ -69,12 +69,12 @@ public class Cammera : MonoBehaviour
     }
     private void ReduceSpeed()        //cuando el jugador est� cerca, reduce la velocidad   
     {
-            DOTween.To(() => Speed, x => Speed = x, SpeedNormal, smoothSpeed); //cambia la velocidad a SpeedNormal con suavizado
+        DOTween.To(() => Speed, x => Speed = x, SpeedNormal, smoothSpeed); //cambia la velocidad a SpeedNormal con suavizado
     }
     private void StopCamera()       //cuando el jugador esaa muy cerca, muestra el canvas y detiene la c�mara
     {
-            Speed = 0;
-            muerte.muerteJugador();
+        Speed = 0;
+        muerte.muerteJugador();
     }
     private void CameraMovement()       //movimiento lateral de la c�mara con las flechas izquierda y derecha
     {

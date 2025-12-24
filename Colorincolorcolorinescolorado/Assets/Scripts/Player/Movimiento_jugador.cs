@@ -22,9 +22,7 @@ public class Movimiento_jugador: MonoBehaviour
     public string CanvasMarcador;
     public TMP_Text textoMarcador;
     private cambio playercambiocolor;
-    private Casilla casillaActual;
-    
-   
+    private Casilla casillaActual
 
     void Start()
     {
@@ -60,7 +58,7 @@ public class Movimiento_jugador: MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            direction = new Vector2 (0, -1);
+            direction = new Vector2(0, -1);
             int scoreIntAfter = Mathf.FloorToInt(score);
             textoMarcador.text = "Score: " + Mathf.Max(0, scoreIntAfter).ToString();
             Movement();
@@ -69,8 +67,6 @@ public class Movimiento_jugador: MonoBehaviour
         {
             cambioColor();
         }
-    
-
     }
 
     void FixedUpdate()
@@ -82,11 +78,9 @@ public class Movimiento_jugador: MonoBehaviour
         }
         isMoving = (change.magnitude != 0); // Si la magnitud es 0 es que est� quieto
     }
-    
 
     void Movement()
     {
-      
         Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position + new Vector3(direction.x, -1, direction.y), Vector3.one*0.2f, Quaternion.identity);
         int i = 0;
 
@@ -100,14 +94,11 @@ public class Movimiento_jugador: MonoBehaviour
                 if (playercambiocolor.currentColor == casilla.color && casilla.color != 0)
                 {
                     canMove = true;
-                }
-
-                    
+                }             
                 if (casilla.tieneObstaculo == false)
                 {
                     canMove = true;
                 }
-
                 if (canMove)
                 {
                     Vector3 p = casilla.getPosition();
@@ -126,9 +117,9 @@ public class Movimiento_jugador: MonoBehaviour
                                 score += 1f;
                             }
 
-                            posicionMax = transform.position.z;
-
+                            posicionMax = transform.position.z
                             int scoreInt = Mathf.FloorToInt(score);
+                           
                             if (scoreInt > highscore)
                             {
                                 highscore = scoreInt;
@@ -138,7 +129,6 @@ public class Movimiento_jugador: MonoBehaviour
                             textoMarcador.text = "Score: " + scoreInt.ToString();
                         }
                     }
-
                     if (playercambiocolor.currentColor != casilla.color && casilla.color != 0)
                     {
                         canMove = false;
@@ -148,8 +138,7 @@ public class Movimiento_jugador: MonoBehaviour
                     break;
                 }
             }
-            i++;
-            
+            i++;         
         }
     }
 
