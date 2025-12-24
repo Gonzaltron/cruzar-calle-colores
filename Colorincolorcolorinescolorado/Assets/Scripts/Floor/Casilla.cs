@@ -8,25 +8,15 @@ public class Casilla : MonoBehaviour
     [SerializeField] public bool activado;
     public GameObject obstaculo;
     public bool tieneObstaculo = false;
-    void Start()
-    {
-      
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-      
-    }
 
     public void ActivarObstaculo()
     {
-        tieneObstaculo = true;
-        obstaculo.SetActive(true);
+        tieneObstaculo = true; 
+        obstaculo.SetActive(true); // hace que el obstaculo aparezca y funcione
     }
     public Vector3 getPosition()
     {
-        return posicion.position;
+        return posicion.position; // devuelve la posicion del obstaculo
     }
 }
 

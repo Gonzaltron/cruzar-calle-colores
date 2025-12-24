@@ -9,10 +9,8 @@ public class Movimiento_jugador: MonoBehaviour
     private float moveSpeed;
     private Rigidbody rb2d;
     private Vector3 change;
-  
     public Vector2 direction;
     public float posicionMax;
-
     bool isMoving = false;
     public bool dead = false;
     public Muerte muerte;
@@ -48,24 +46,22 @@ public class Movimiento_jugador: MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            direction = new Vector2(1, 0);
+            direction = new Vector2(1, 0); // Hacia la derecha
             Movement();
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            direction = new Vector2(0, 1);
+            direction = new Vector2(0, 1); // Hacia adelante
             Movement();
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            direction = new Vector2(0, -1);
-            int scoreIntAfter = Mathf.FloorToInt(score);
-            textoMarcador.text = "Score: " + Mathf.Max(0, scoreIntAfter).ToString();
+            direction = new Vector2(0, -1); // Hacia atrás
             Movement();
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            cambioColor();
+            cambioColor(); // Llama a la funcion de cambiar el color de jellyfish
         }
     }
 
@@ -144,20 +140,19 @@ public class Movimiento_jugador: MonoBehaviour
 
     void cambioColor()
     {
-        playercambiocolor.ChangeColor();
+        playercambiocolor.ChangeColor(); // Jellyfish cambiacolor
 
-        if (playercambiocolor.currentColor != casillaActual.color && casillaActual.color != 0)
+        if (playercambiocolor.currentColor != casillaActual.color && casillaActual.color != 0) // Su el color de jellyfish no es el mismo que la casilla actual y es una de lals dos opciones de casillas de color
         {
-            muerte.muerteJugador();
+            muerte.muerteJugador(); // Se muere
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Tiburon") || (collision.gameObject.CompareTag("Calamar") && collision.gameObject.GetComponent<Calamar>().dead))
+        if (collision.gameObject.CompareTag("Tiburon") || (collision.gameObject.CompareTag("Calamar") && collision.gameObject.GetComponent<Calamar>().dead)) // Si choca con un tiburon o está encima del calamar cuando se muera
         {
-            dead = true;
-            muerte.muerteJugador();
+            muerte.muerteJugador(); // Se muere
         }
     }
 }

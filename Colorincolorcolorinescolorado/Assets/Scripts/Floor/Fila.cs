@@ -15,22 +15,16 @@ public class Fila : MonoBehaviour
         this.safeIndex = safeIndex;
         this.tieneObstaculo = tieneObstaculo;
 
-        yield return new WaitUntil(() => casillas != null && casillas.Count > 0);
-
-    }
-
-    void Start()
-    {
-    }
-
-    void Update()
-    {
+        while (casillas == null || casillas.Count == 0)
+        {
+            yield return null;
+        }
     }
 
     public void generarObstaculos()
     {
-        List<int> candidates = new List<int>(casillas.Count);
-        int allowedObstaculos = Mathf.Clamp(maxObstaculos, 0, Mathf.Max(0, casillas.Count - 1));
+        List<int> posiblesObstaculos = new List<int>(casillas.Count);
+        int obstaculosPermitidos = Mathf.Clamp(maxObstaculos, 0, Mathf.Max(0, casillas.Count - 1));
 
         if (obstaculosGenerados)
         {
@@ -47,7 +41,7 @@ public class Fila : MonoBehaviour
             return;
         }
 
-        if (allowedObstaculos <= 0)
+        if (obstaculosPermitidos <= 0)
         {
             return;
         }
@@ -58,22 +52,22 @@ public class Fila : MonoBehaviour
             {
                 continue;
             }
-            candidates.Add(i);
+            posiblesObstaculos.Add(i);
         }
 
-        for (int i = candidates.Count - 1; i > 0; i--)
+        for (int i = posiblesObstaculos.Count - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
-            int tmp = candidates[i];
-            candidates[i] = candidates[j];
-            candidates[j] = tmp;
+            int tmp = posiblesObstaculos[i];
+            posiblesObstaculos[i] = posiblesObstaculos[j];
+            posiblesObstaculos[j] = tmp;
         }
 
-        int maxAvailable = Mathf.Min(allowedObstaculos, candidates.Count);
+        int maxAvailable = Mathf.Min(obstaculosPermitidos, posiblesObstaculos.Count);
         int numObstaculos = Random.Range(0, maxAvailable + 1); 
-        for (int k = 0; k < numObstaculos; k++)
+        for (int i = 0; i < numObstaculos; i++)
         {
-            casillas[candidates[k]].ActivarObstaculo();
+            casillas[posiblesObstaculos[i]].ActivarObstaculo();
         }
     }
 }
