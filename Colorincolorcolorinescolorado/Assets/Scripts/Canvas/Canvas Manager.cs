@@ -88,8 +88,14 @@ public class CanvasManager : MonoBehaviour
     {
         canvas.enabled = true; // se asegura de que el canvas este activo
         canvasgMarcador.interactable = true;
-        if (botonPausa != null) botonPausa.SetActive(true);
-        if (botonResume != null) botonResume.SetActive(false);
+        if (botonPausa != null) 
+        {
+            botonPausa.SetActive(true); 
+        }
+        if (botonResume != null)
+        {
+            botonResume.SetActive(false);
+        }
         canvasgMenuPrincipal.interactable = false;
         //hacen que aparezcan y desaparezcan los canvas correspondientes
         canvasgMenuPrincipal.DOFade(0f, 1f).From(1f);
