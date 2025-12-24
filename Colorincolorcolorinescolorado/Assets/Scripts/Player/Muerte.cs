@@ -32,4 +32,12 @@ public class Muerte : MonoBehaviour
         cam.SpeedFast = 0;
         canvasManager.CanvasMuerte();
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Tiburon"))
+        {
+            muerteJugador();
+        }
+    }
 }

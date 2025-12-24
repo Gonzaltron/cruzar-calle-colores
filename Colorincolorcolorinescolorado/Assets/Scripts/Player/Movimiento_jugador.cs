@@ -152,6 +152,7 @@ public class Movimiento_jugador: MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Tiburon") || (collision.gameObject.CompareTag("Calamar") && collision.gameObject.GetComponent<Calamar>().dead)) // Si choca con un tiburon o está encima del calamar cuando se muera
         {
+            dead = true;
             muerte.muerteJugador(); // Se muere
         }
     }
