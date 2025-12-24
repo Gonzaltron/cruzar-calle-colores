@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Calamar
   speed: 0
-  TimeOnSquid: 0
+  TimeOnSquid: 5
   dead: 0
   mallaVivo: {fileID: 0}
   mallaMuerto: {fileID: 0}
