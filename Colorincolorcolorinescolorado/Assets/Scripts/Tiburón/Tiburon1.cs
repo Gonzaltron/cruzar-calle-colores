@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 
-public class Tiburón2 : MonoBehaviour
+public class Tiburón2 : MonoBehaviour // Es lo mismo que el script de tiburon pero para los tiburones que van de derecha a izquierda
 {
     public Canvas canvas;
     [SerializeField] float speed; //variable de velocidad

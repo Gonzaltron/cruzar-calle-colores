@@ -21,19 +21,12 @@ public class cambio : MonoBehaviour
 
         rendererObject.material.color = defaultColor;   //Se inicializa el color al color principal
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))        //Seleccionar la tecla E para cambiar el color
-        {
-          
-        }
-    }
+
     public void ChangeColor()
     {
         if (!colorChanged)
         {
             ChangeColorMethod(newColor);        //Cambiar el color inicial al segundo color si el inicial est� puesto
-
         }
         else
         {

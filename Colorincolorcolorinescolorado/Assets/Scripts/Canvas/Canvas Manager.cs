@@ -114,11 +114,11 @@ public class CanvasManager : MonoBehaviour
     
     public void Pausa()
     {
-        Time.timeScale = 0f;
-        botonPausa.SetActive(false);
-        botonResume.SetActive(true);
-        botonReturn.SetActive(true);
-        movimientoJugador.enabled = false;
+        Time.timeScale = 0f; // El tiempo se para
+        botonPausa.SetActive(false); // Desaparece el boton de pausa
+        botonResume.SetActive(true); // Aparece el boton de reanudar
+        botonReturn.SetActive(true); // Aparece el boton de volver
+        movimientoJugador.enabled = false; // El jugador no se puede mover
     }
 
     public void Resume()
@@ -136,7 +136,7 @@ public class CanvasManager : MonoBehaviour
         botonResume.SetActive(false);
         botonReturn.SetActive(false);
         Time.timeScale = 1f;
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SampleScene"); // Reinicia la escena de juego
     }
 
     IEnumerator WaitAndResume()

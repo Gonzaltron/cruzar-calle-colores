@@ -33,75 +33,68 @@ public class FloorManager : MonoBehaviour
 
     void Update()
     {
-        if (jugador.posicionMax >= ultimaFila - filasIniciales)
+        if (jugador.posicionMax >= ultimaFila - filasIniciales) // Si la posicion maxima del jugador es mayor o igual que la ultima fila - las iniciales
         {
-            GenerateMoreSuelo();
+            GenerateMoreSuelo(); // Se llama a la funcion de generar mas suelo
         }
-        EliminarSuelo();
+        EliminarSuelo(); // Sino se llama a la funcion de eliminar suelo
     }
 
     void NextSuelo(GameObject tipoSuelo, bool tieneObstaculo)
     {
-        var nuevafila = Instantiate(tipoSuelo, posicion, Quaternion.identity, transform);
-        if (tipoSuelo == sueloNormal)
+        var nuevafila = Instantiate(tipoSuelo, posicion, Quaternion.identity, transform); // Se inicializa una nueva fila con estos parametros
+        if (tipoSuelo == sueloNormal) // Si la fila es una fila normal
         {
-            var fila = nuevafila.GetComponent<Fila>();
-            int incoming = currentSafeIndex;
-            if (incoming < 0)
+            var fila = nuevafila.GetComponent<Fila>(); // Se guarda la fila creada
+            int siguiente = currentSafeIndex; 
+            if (siguiente < 0) // Si siguiente tiene un valor menor a 0
             {
-                // try to find the most recent fila with a valid safeIndex so new row can align
-                for (int ci = transform.childCount - 1; ci >= 0; ci--)
-                {
-                    var prev = transform.GetChild(ci).GetComponent<Fila>();
-                    if (prev != null && prev.safeIndex >= 0)
-                    {
-                        incoming = prev.safeIndex;
-                        break;
-                    }
-                }
+                siguiente = ObtenerSafeIndexAnterior(); // Sigueinte toma el valor del indice seguro actual
             }
-            StartCoroutine(SetupFila(fila, incoming, tieneObstaculo));
+            StartCoroutine(SetupFila(fila, siguiente, tieneObstaculo));
         }
-        posicion.z += 1;
-        ultimaFila = posicion.z;
+        posicion.z += 1; // La posicionz se sume en uno porque cada fila ocupa 1 z
+        ultimaFila = posicion.z; // La posicion de la ultima fila es la de la posicion z
+    }
+    int ObtenerSafeIndexAnterior()
+    {
+        return currentSafeIndex; // Devuelve el indice seguro actual
     }
 
-    IEnumerator SetupFila(Fila fila, int incomingSafeIndex, bool tieneObstaculo)
+    IEnumerator SetupFila(Fila fila, int siguienteSafeIndex, bool tieneObstaculo)
     {
-        yield return new WaitUntil(() => fila.casillas != null && fila.casillas.Count > 0);
-        int count = fila.casillas.Count;
-        int chosen;
-        if (incomingSafeIndex >= 0 && incomingSafeIndex < count)
+        while (fila.casillas== null || fila.casillas.Count == 0)
         {
-            chosen = incomingSafeIndex;
+            yield return null;
         }
-        else
+        int cantidad = fila.casillas.Count; // La cantidad es la cantidad de casillas de las filas
+        int elegida;
+        if (siguienteSafeIndex >= 0 && siguienteSafeIndex < cantidad) // Si el indice seguro es mayor que 0 y menor a la cantidad de casillas
         {
-            if (jugador != null)
+            elegida = siguienteSafeIndex; // Casilla elegida para tener el indice seguro
+        }
+        else // Si no podemos usar ese indice seguro
+        { 
+            float posicionX = jugador.transform.position.x; // la posicionX es la posicion x del jugador
+            float mejorDistancia = float.MaxValue; // Hacer que la mejorDistancia sea un un valor muy ato
+            int mejorIndice = 0;
+            for (int i = 0; i < cantidad; i++) // Se elegira la casilla mas cercana al jugador como casilla segura
             {
-                float px = jugador.transform.position.x;
-                float bestDist = float.MaxValue;
-                int bestIdx = 0;
-                for (int i = 0; i < count; i++)
+                float distanciaX = Mathf.Abs(fila.casillas[i].getPosition().x - posicionX);
+                if (distanciaX < mejorDistancia)
                 {
-                    float dx = Mathf.Abs(fila.casillas[i].getPosition().x - px);
-                    if (dx < bestDist)
-                    {
-                        bestDist = dx;
-                        bestIdx = i;
-                    }
+                    mejorDistancia = distanciaX;
+                    mejorIndice = i;
                 }
-                chosen = bestIdx;
             }
-            else
-            {
-                chosen = count / 2; 
-            }
+            elegida = mejorIndice; //El indice seguro es el mejor indice
         }
-            fila.safeIndex = chosen;
-        fila.tieneObstaculo = tieneObstaculo;
-        if (tieneObstaculo) fila.generarObstaculos();
-        currentSafeIndex = Mathf.Clamp(chosen + Random.Range(-1, 2), 0, count - 1);
+        fila.safeIndex = elegida; // Asignar el indice seguro a la fila
+        fila.tieneObstaculo = tieneObstaculo; // La fila tendra obstaculo
+        if (tieneObstaculo) // Si tiene obstaculo
+        {
+            fila.generarObstaculos(); // Se genera osbtaculo
+        }
     }
 
     void GenerateMoreSuelo()
@@ -140,7 +133,7 @@ public class FloorManager : MonoBehaviour
         else if (!ultimaEsRoja && probability <= 80)
         {
             NextSuelo(sueloNegro, false);
-            ultimaEsNegra = true;
+            ultimaEsNegra = true; 
             ultimaEsRoja = false;
         }
         else if (!ultimaEsNegra && probability <= 100)
@@ -153,14 +146,14 @@ public class FloorManager : MonoBehaviour
     
     void EliminarSuelo()
     {
-        for (int i = transform.childCount - 1; i >= 0; i--)
+        for (int i = transform.childCount - 1; i >= 0; i--) // For de todas las filas de más a menos para que no se alteren los indices al borrar
         {
-            Transform filaTransform = transform.GetChild(i);
-            float distanciaJugador = Mathf.Abs(filaTransform.position.z - jugador.transform.position.z);
+            Transform filaTransform = transform.GetChild(i); // Se coge el transform de cada fila
+            float distanciaJugador = Mathf.Abs(filaTransform.position.z - jugador.transform.position.z); // Calcula la distancia entre fila y jugador
 
-            if (distanciaJugador > 20)
+            if (distanciaJugador > 20) // Si la distancia es mayor de 20 casillas
             {
-                Destroy(filaTransform.gameObject);
+                Destroy(filaTransform.gameObject); // Se destruye la fila
             }
         }
     }

@@ -8,18 +8,6 @@ public class Colorin : MonoBehaviour
     public GameObject casilla;
     public GameObject player;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter(Collider player)
     {
         if (!player.CompareTag("Player"))
@@ -36,15 +24,6 @@ public class Colorin : MonoBehaviour
                 player.gameObject.GetComponent<Muerte>();
              }
         }
-    }
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            
-        
-        }
-
     }
 }
 

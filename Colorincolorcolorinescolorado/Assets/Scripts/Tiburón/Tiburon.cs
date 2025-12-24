@@ -39,8 +39,8 @@ public class Tiburón : MonoBehaviour
     {
         if (other.gameObject.CompareTag("trigger"))
         {
-            float newZ = transform.position.z;
-            transform.position = new Vector3(4,0,newZ);
+            float newZ = transform.position.z; // Se guarda la posicion z de la fila, que varia de tiburon en tiburon por el numero de fila que es
+            transform.position = new Vector3(4,0,newZ); // Reaparece en la primera casilla (la de la posicion 4) de su fila
         }
 
         if (other.gameObject.CompareTag("Player"))
