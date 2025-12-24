@@ -9,18 +9,6 @@ public class Fila : MonoBehaviour
     private bool obstaculosGenerados = false;
     public int safeIndex = -1;
     
-  
-    public IEnumerator Inicializar(int safeIndex, bool tieneObstaculo)
-    {
-        this.safeIndex = safeIndex; // Inciialiar el safeINdex
-        this.tieneObstaculo = tieneObstaculo; // Inicializar el bool t ieneObstaculo
-
-        while (casillas == null || casillas.Count == 0) // Mientras las casillas sean null ono haya
-        {
-            yield return null;
-        }
-    }
-
     public void generarObstaculos()
     {
         List<int> posiblesObstaculos = new List<int>(casillas.Count); // Lista de los obstaculos, hay uno por cada casilla

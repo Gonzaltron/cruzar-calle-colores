@@ -104,13 +104,13 @@ public class Movimiento_jugador: MonoBehaviour
                     {
                         if (transform.position.z > posicionMax)
                         {
-                            if (score < 1f)
+                            if (score < 1)
                             {
-                                score = 1f; 
+                                score = 1; 
                             }
                             else
                             {
-                                score += 1f;
+                                score += 1;
                             }
 
                             posicionMax = transform.position.z;
