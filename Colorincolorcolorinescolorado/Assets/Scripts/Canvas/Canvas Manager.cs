@@ -57,7 +57,6 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMenuPrincpal()
     {
-        Debug.Log("MenuPrincipal");
         movimientoJugador.enabled = false;
         int saved = PlayerPrefs.GetInt("Record", 0);
         if (record != null)
@@ -82,7 +81,6 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMarcador()
     {
-        Debug.Log("Marcador");
         canvas.enabled = true;
         canvasgMarcador.interactable = true;
         if (botonPausa != null) botonPausa.SetActive(true);
@@ -98,7 +96,6 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMuerte()
     {
-        Debug.Log("Muerte");
         canvasgMarcador.interactable = false;
         canvasgMarcador.DOFade(0f, 0.5f).From(1f);
         int puntuacion = Mathf.FloorToInt(movimientoJugador.score);
@@ -133,8 +130,6 @@ public class CanvasManager : MonoBehaviour
         movimientoJugador.enabled = true;
     }
 
-
-
     public void Returns()
     {
         botonPausa.SetActive(false);
@@ -143,7 +138,6 @@ public class CanvasManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("SampleScene");
     }
-    
 
     IEnumerator WaitAndResume()
     {

@@ -37,6 +37,7 @@ public class FloorManager : MonoBehaviour
         {
             GenerateMoreSuelo();
         }
+        EliminarSuelo();
     }
 
     void NextSuelo(GameObject tipoSuelo, bool tieneObstaculo)
@@ -152,6 +153,15 @@ public class FloorManager : MonoBehaviour
     
     void EliminarSuelo()
     {
-       
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Transform filaTransform = transform.GetChild(i);
+            float distanciaJugador = Mathf.Abs(filaTransform.position.z - jugador.transform.position.z);
+
+            if (distanciaJugador > 20)
+            {
+                Destroy(filaTransform.gameObject);
+            }
+        }
     }
 }
