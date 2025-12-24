@@ -13,16 +13,16 @@ public class OverlapBox : MonoBehaviour
     
     void Colisiones()
     {
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, m_layerMask);
+        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, m_layerMask); // Se guarda los colliders de alrededor
         int i = 0;
 
-        while (i < hitColliders.Length)
+        while (i < hitColliders.Length) // Recorre todos los colliders detectados
         {
             i++;
         }
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmos() // Crea un cuadrado rojo para saber la posicion del jellyfish
     {
         Gizmos.color = Color.red;
         if (Application.isPlaying)

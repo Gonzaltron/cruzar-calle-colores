@@ -10,19 +10,18 @@ public class Colorin : MonoBehaviour
 
     void OnTriggerEnter(Collider player)
     {
-        if (!player.CompareTag("Player"))
+        if (!player.CompareTag("Player")) // Si toca aglo que no tenga el tag player
         {
             return;
         }
 
-        cambio playerColor = player.GetComponent<cambio>();
+        cambio playerColor = player.GetComponent<cambio>(); // Obtener el componente del color del jugador
 
-        if (player.CompareTag("Player"))
+        if (player.CompareTag("Player")) // Si toca algo que tenga el tag player
         {
-             if (player.gameObject.GetComponent<cambio>().colorChanged == false)
-             {
-                player.gameObject.GetComponent<Muerte>();
-             }
+            { 
+                player.gameObject.GetComponent<Muerte>(); // Se muere
+            }
         }
     }
 }
