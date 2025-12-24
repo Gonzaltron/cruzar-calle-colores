@@ -22,7 +22,7 @@ public class Movimiento_jugador: MonoBehaviour
     public string CanvasMarcador;
     public TMP_Text textoMarcador;
     private cambio playercambiocolor;
-    private Casilla casillaActual
+    private Casilla casillaActual;
 
     void Start()
     {
@@ -117,7 +117,7 @@ public class Movimiento_jugador: MonoBehaviour
                                 score += 1f;
                             }
 
-                            posicionMax = transform.position.z
+                            posicionMax = transform.position.z;
                             int scoreInt = Mathf.FloorToInt(score);
                            
                             if (scoreInt > highscore)
