@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class FloorManager : MonoBehaviour
 {
     public GameObject sueloNormal;
-    public GameObject sueloCalamar;
     public GameObject sueloTiburon;
     public GameObject sueloTiburon2;
     public GameObject sueloTiburon3;
@@ -121,12 +120,6 @@ public class FloorManager : MonoBehaviour
         else if (probability <= 50)
         {
             NextSuelo(sueloTiburon3, false); // Crear� un suelo con tiburones
-            ultimaEsRoja = false;
-            ultimaEsNegra = false;
-        }
-        else if (probability <= 65)
-        {
-            NextSuelo(sueloCalamar, false); // Crear� un suelo con calamares
             ultimaEsRoja = false;
             ultimaEsNegra = false;
         }
