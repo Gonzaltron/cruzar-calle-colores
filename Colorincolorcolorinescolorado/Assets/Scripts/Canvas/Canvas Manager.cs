@@ -156,6 +156,11 @@ public class CanvasManager : MonoBehaviour
         SceneManager.LoadScene("SampleScene"); // Reinicia la escena de juego
     }
 
+    public void Salir()
+    {
+        Application.Quit(); // Sale de la aplicacion
+    }
+
     IEnumerator WaitAndResume()
     {
         //espera un momento antes de reanudar el movimiento del jugador y la camara
