@@ -43,6 +43,7 @@ public class Cammera : MonoBehaviour
             unaVez = true; 
         }  
 
+        //si se cumplen las distancias, llama a las funciones correspondientes
         if(distanceZ < 6 && distanceZ > -2)
         {
             ReduceSpeed();

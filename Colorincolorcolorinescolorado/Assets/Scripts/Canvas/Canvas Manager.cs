@@ -7,6 +7,7 @@ using UnityEngine.Profiling;
 
 public class CanvasManager : MonoBehaviour
 {
+    //variables de la clase
     public CanvasGroup canvasgMarcador;
     public CanvasGroup canvasgMuerte;
     public CanvasGroup canvasgMenuPrincipal;
@@ -23,6 +24,7 @@ public class CanvasManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // al iniciar el juego, desactiva los canvas de marcador y muerte, y activa el de menu principal
         movimientoJugador.enabled = false;
         botonPausa.SetActive(false);
         botonResume.SetActive(false);
@@ -34,9 +36,10 @@ public class CanvasManager : MonoBehaviour
         canvasgMuerte.alpha = 0f;
         canvasgMuerte.interactable = false;
         camara.activo = false;
-        int saved = PlayerPrefs.GetInt("Record", 0);
-        if (record != null)
+        int saved = PlayerPrefs.GetInt("Record", 0); //obtiene el record guardado 
+        if (record != null) // si es valido
         {
+            // muestra el record en el canvas de menu principal
             if (saved > 0)
             {
                 record.text = "Record: " + saved.ToString();
@@ -57,6 +60,7 @@ public class CanvasManager : MonoBehaviour
 
     public void CanvasMenuPrincpal()
     {
+        //cuando se carga el menu principal, desactiva el canvas de muerte y activa el de menu principal
         movimientoJugador.enabled = false;
         int saved = PlayerPrefs.GetInt("Record", 0);
         if (record != null)
@@ -71,21 +75,23 @@ public class CanvasManager : MonoBehaviour
                 record.gameObject.SetActive(false);
             }
         }
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SampleScene"); //recarga la escena
         canvasgMuerte.interactable = false;
-        canvasgMuerte.DOFade(0f, 1f).From(1f);
-        canvasgMenuPrincipal.DOFade(1f, 1f).From(0f);
-        canvasgMenuPrincipal.interactable = true;
+        canvasgMuerte.DOFade(0f, 1f).From(1f);  //hace que desaoparezca el canvas de muerte
+        canvasgMenuPrincipal.DOFade(1f, 1f).From(0f); //hace que aparezca el canvas de menu principal
+        canvasgMenuPrincipal.interactable = true; //hace que se pueda interactauar con el canvas deñ menu principal
         camara.activo = false;
     }
 
+//cuando se da a jugar
     public void CanvasMarcador()
     {
-        canvas.enabled = true;
+        canvas.enabled = true; // se asegura de que el canvas este activo
         canvasgMarcador.interactable = true;
         if (botonPausa != null) botonPausa.SetActive(true);
         if (botonResume != null) botonResume.SetActive(false);
         canvasgMenuPrincipal.interactable = false;
+        //hacen que aparezcan y desaparezcan los canvas correspondientes
         canvasgMenuPrincipal.DOFade(0f, 1f).From(1f);
         canvasgMarcador.DOFade(1f, 1f).From(0f);
         canvasgMuerte.DOFade(0f, 1f).From(1f);
@@ -100,11 +106,14 @@ public class CanvasManager : MonoBehaviour
         canvasgMarcador.DOFade(0f, 0.5f).From(1f);
         int puntuacion = Mathf.FloorToInt(movimientoJugador.score);
         int record = movimientoJugador.highscore;
+        //muestra en pantalla el recor y la puntuación de la partida
         if (scorefinal != null)
         {
             scorefinal.text = "Score: " + puntuacion.ToString() + "\nHighscore: " + record.ToString();
         }
         canvasgMuerte.DOFade(1f, 0.5f).From(0f);
+
+        //guarfda el record si se ha superado
         PlayerPrefs.SetInt("Record", record);
         PlayerPrefs.Save();
         canvasgMuerte.interactable = true;
@@ -113,7 +122,7 @@ public class CanvasManager : MonoBehaviour
     }
     
     public void Pausa()
-    {
+    { //pausa el juego y muestra los botones correspondientes
         Time.timeScale = 0f;
         botonPausa.SetActive(false);
         botonResume.SetActive(true);
@@ -123,6 +132,7 @@ public class CanvasManager : MonoBehaviour
 
     public void Resume()
     {
+        //reanuda el juego y oculta los botones correspondientes
         Time.timeScale = 1f;
         botonPausa.SetActive(true);
         botonResume.SetActive(false);
@@ -132,6 +142,7 @@ public class CanvasManager : MonoBehaviour
 
     public void Returns()
     {
+        //recarga la escena desde el principio
         botonPausa.SetActive(false);
         botonResume.SetActive(false);
         botonReturn.SetActive(false);
@@ -141,6 +152,7 @@ public class CanvasManager : MonoBehaviour
 
     IEnumerator WaitAndResume()
     {
+        //espera un momento antes de reanudar el movimiento del jugador y la camara
         yield return new WaitForSeconds(0.1f);
         camara.activo = true;
         movimientoJugador.enabled = true;
